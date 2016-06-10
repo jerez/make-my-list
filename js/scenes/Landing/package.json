@@ -1,0 +1,6 @@
+{
+  "name": "LandingScene",
+  "version": "0.0.1",
+  "main": "./LandingScene.js",
+  "private": true
+}

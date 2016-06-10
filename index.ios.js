@@ -1,53 +1,50 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
+ * Make My list
  */
 
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { AppRegistry, Linking } from 'react-native';
+import Landing from './js/scenes/Landing';
+import AltContainer from 'alt-container';
+
+import AuthActions from './js/flux/actions/AuthActions';
+import AuthStore from './js/flux/stores/AuthStore';
+import SpotifyConnect from './js/utils/SpotifyConnect';
 
 class MakeMyList extends Component {
+
+  constructor(props){
+    super(props);
+    this.connectHelper = new SpotifyConnect();
+  }
+
+  componentDidMount() {
+    Linking.addEventListener('url', this._handleOpenURL);
+  }
+
+  componentWillUnmount() {
+    Linking.removeEventListener('url', this._handleOpenURL);
+  }
+
+  _handleOpenURL = (event) => {
+    this.connectHelper.isConnectRedirection(event.url)
+    .then((redirectUri) => {
+      this.connectHelper.parseRedirection(redirectUri)
+      .then((code) => {
+        AuthActions.login(code);
+      })
+      .catch((error) => {
+        alert(error === 'access_denied' ? 'You should connect with spotify your account!' : `Something went wrong!\n ${error}`)
+      });
+    })
+    .catch((error) => { alert(error) });
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
+      <AltContainer actions={ { actions:AuthActions} } store={AuthStore} >
+        <Landing connectHelper={ this.connectHelper }/>
+      </AltContainer>);
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('MakeMyList', () => MakeMyList);
