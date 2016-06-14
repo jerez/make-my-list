@@ -2,21 +2,51 @@
 import alt from '../alt';
 import AuthActions from '../actions/AuthActions';
 import AuthSource from '../sources/AuthSource';
+import { AsyncStorage } from 'react-native';
+
+const STORAGE_KEY = 'AUTH_STORE';
 
 export default class AuthStore {
 
   constructor() {
-    this._setInitialState();
     this.bindActions(AuthActions);
     this.registerAsync(AuthSource);
+    this.on('init', () => {
+      this._loadInitialState();
+    });
+    this.on('error', (err, payload, currentState) => {
+      this._clearState();
+    });
+    this.on('afterEach', (payload) => {
+      console.log(payload);
+      AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify(payload.state));
+    });
   }
 
-  _setInitialState = () => {
-    this.authCode = null;
-    this.authToken = null;
-    this.refreshToken = null;
-    this.tokenType = null;
-    this.user = null;
+  async _loadInitialState() {
+    try {
+      const state = JSON.parse(await AsyncStorage.getItem(STORAGE_KEY));
+      if (state !== null){
+        Object.assign(this, state);
+      } else {
+        this._clearState();
+      }
+    } catch (error) {
+      this._clearState();
+    }
+    this.getInstance().emitChange();
+  }
+
+  _clearState() {
+    const cleanState = {
+      authCode: null,
+      authToken: null,
+      refreshToken: null,
+      tokenType: null,
+      user: null,
+    };
+    Object.assign(this, cleanState);
+    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(cleanState));
   }
 
   onLogin(code) {
@@ -37,7 +67,7 @@ export default class AuthStore {
 
   onFetchUserSuccess(response) {
     if(response.hasOwnProperty('error')){
-      this._setInitialState();
+      this._clearState();
     } else {
       this.user = response;
     }
@@ -45,12 +75,12 @@ export default class AuthStore {
 
   onFetchUserFailed(error) {
     console.log('logInFailed::', error);
-    this._setInitialState();
+    this._clearState();
   }
 
   onLogOut() {
     console.log('logout');
-    this._setInitialState();
+    this._clearState();
   }
 }
 
