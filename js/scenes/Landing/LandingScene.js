@@ -10,14 +10,14 @@ export default class LandingScreen extends Component {
   static propTypes = {
     connectHelper: PropTypes.shape({
       showLogin: PropTypes.func.isRequired,
-    }).isRequired
+    }).isRequired,
   };
 
 _renderComponent = () => {
   if (this.props.user) {
-    return <SpotifyProfile user = { this.props.user }/>
+    return <SpotifyProfile user={ this.props.user } onLogoutClick={ this._handleLogoutTapped }/>
   } else {
-    return <SpotifyButton onClick = { this._handleConnectTapped }/>
+    return <SpotifyButton onClick={ this._handleConnectTapped }/>
   }
 }
 
@@ -41,5 +41,9 @@ _renderComponent = () => {
 
  _handleConnectTapped = () => {
    this.props.connectHelper.showLogin();
+ }
+
+ _handleLogoutTapped = () => {
+   this.props.actions.logOut();
  }
 }

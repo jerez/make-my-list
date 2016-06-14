@@ -18,7 +18,6 @@ export default class AuthStore {
       this._clearState();
     });
     this.on('afterEach', (payload) => {
-      console.log(payload);
       AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify(payload.state));
     });
   }
@@ -28,13 +27,13 @@ export default class AuthStore {
       const state = JSON.parse(await AsyncStorage.getItem(STORAGE_KEY));
       if (state !== null){
         Object.assign(this, state);
+        this.getInstance().emitChange();
       } else {
         this._clearState();
       }
     } catch (error) {
       this._clearState();
     }
-    this.getInstance().emitChange();
   }
 
   _clearState() {
@@ -45,8 +44,9 @@ export default class AuthStore {
       tokenType: null,
       user: null,
     };
-    Object.assign(this, cleanState);
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(cleanState));
+    Object.assign(this, cleanState);
+    this.getInstance().emitChange();
   }
 
   onLogin(code) {
@@ -54,11 +54,8 @@ export default class AuthStore {
     this.getInstance().requestToken();
   }
 
-  onLogInFailed(error) {
-    console.log('logInFailed::',error);
-  }
-
   onFetchUser(credentials) {
+    console.log(credentials);
     this.authToken = credentials.access_token;
     this.refreshToken = credentials.refresh_token;
     this.tokenType = credentials.token_type;
@@ -71,6 +68,11 @@ export default class AuthStore {
     } else {
       this.user = response;
     }
+  }
+
+  onLogInFailed(error) {
+    console.log('logInFailed::',error);
+    this._clearState();
   }
 
   onFetchUserFailed(error) {

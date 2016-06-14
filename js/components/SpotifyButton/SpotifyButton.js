@@ -9,7 +9,7 @@ export default class SpotifyButton extends Component {
   static propTypes = {
     onClick: PropTypes.func.isRequired,
   };
-  
+
   render() {
     return (
       <View style={styles.main}>
@@ -17,7 +17,6 @@ export default class SpotifyButton extends Component {
           CONNECT TO:
         </Text>
         <Button containerStyle={styles.container}
-          styleDisabled={styles.disabled}
           style={styles.default}
           onPress={this._handlePress}>
           <Image
