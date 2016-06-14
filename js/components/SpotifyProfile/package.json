@@ -1,0 +1,6 @@
+{
+  "name": "SpotifyProfile",
+  "version": "0.0.1",
+  "main": "./SpotifyProfile.js",
+  "private": true
+}
