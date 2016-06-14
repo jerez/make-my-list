@@ -5,7 +5,7 @@ import styles from './styles';
 import SpotifyButton from '../../components/SpotifyButton';
 import SpotifyProfile from '../../components/SpotifyProfile';
 
-export default class LandingScene extends Component {
+export default class SeedScene extends Component {
 
   static propTypes = {
     connectHelper: PropTypes.shape({

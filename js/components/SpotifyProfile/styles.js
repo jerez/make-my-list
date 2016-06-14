@@ -6,6 +6,16 @@ export default StyleSheet.create({
   main: {
     alignItems: 'center',
   },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginTop: 20,
+  },
   picture: {
     height: 100,
     borderRadius: 50,
@@ -22,5 +32,4 @@ export default StyleSheet.create({
     fontSize: 20,
     color: spotifyGreen,
   },
-
 });

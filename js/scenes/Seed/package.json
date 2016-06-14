@@ -1,0 +1,6 @@
+{
+  "name": "SeedScene",
+  "version": "0.0.1",
+  "main": "./SeedScene.js",
+  "private": true
+}
