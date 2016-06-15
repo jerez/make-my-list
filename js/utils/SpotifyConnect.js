@@ -1,4 +1,4 @@
-import constants from './config';
+import config from './config';
 import { Linking } from 'react-native';
 import url from 'url';
 import querystring from 'querystring';
@@ -6,14 +6,14 @@ import querystring from 'querystring';
 export default class SpotifyConnect {
   static showLogin() {
     const payload =  {
-      client_id: constants.Spotify.clientId,
+      client_id: config.Spotify.clientId,
       response_type: 'code',
-      redirect_uri: constants.Spotify.redirectUri,
+      redirect_uri: config.Spotify.redirectUri,
       scope: 'user-read-private',
       show_dialog:'true'
     };
 
-    const authUrl = url.format({protocol:'https', host:constants.Spotify.accountHost, pathname:'authorize', query:payload});
+    const authUrl = url.format({protocol:'https', host:config.Spotify.accountHost, pathname:'authorize', query:payload});
 
     Linking.canOpenURL(authUrl)
     .then(supported => {

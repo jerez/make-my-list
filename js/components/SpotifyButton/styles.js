@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native'
-
-const spotifyGreen = '#1ED760';
+import config from 'MakeMyList/js/utils/config';
 
 export default StyleSheet.create({
   main: {
@@ -13,14 +12,11 @@ export default StyleSheet.create({
     height:50,
     overflow:'hidden',
     borderRadius:25,
-    backgroundColor: 'black'
+    backgroundColor: config.UI.Black,
   },
   default: {
     fontSize: 20,
-    color: spotifyGreen,
-  },
-  disabled: {
-    color: 'red',
+    color: config.UI.Green,
   },
   logo: {
     flex: 1,

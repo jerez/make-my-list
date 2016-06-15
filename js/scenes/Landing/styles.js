@@ -1,22 +1,27 @@
 import { StyleSheet } from 'react-native'
-
-const spotifyGreen = '#1ED760';
+import config from 'MakeMyList/js/utils/config';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+    backgroundColor: config.UI.White,
   },
   instructions: {
     textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+    color: config.UI.Grey,
   },
+  startButton: {
+    margin:20,
+    paddingVertical:10,
+    paddingHorizontal:50,
+    height:50,
+    overflow:'hidden',
+    borderRadius:25,
+    backgroundColor: config.UI.Green,
+    fontSize: 20,
+    color: config.UI.White,
+  },
+
 });

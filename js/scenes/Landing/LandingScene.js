@@ -1,57 +1,53 @@
 
 import React, { PropTypes, Component } from 'react';
-import {View, Modal } from 'react-native';
-import styles from './styles';
+import {View, Modal, Text } from 'react-native';
+
+import Button from 'react-native-button';
 import SpotifyButton from 'MakeMyList/js/components/SpotifyButton';
 import SpotifyProfile from 'MakeMyList/js/components/SpotifyProfile';
 
+import styles from './styles';
+
+import AltContainer from 'alt-container';
 import AuthActions from 'MakeMyList/js/flux/actions/AuthActions';
 import AuthStore from 'MakeMyList/js/flux/stores/AuthStore';
 
-export default class LandingScene extends Component {
+export default class LandingSceneContainer extends Component {
+  render() {
+    return (
+      <AltContainer store={AuthStore} actions={{AuthActions: AuthActions}}>
+        <LandingScene {...this.props} />
+      </AltContainer>
+   );
+ }
+}
 
-  constructor(props){
-    super(props);
-    this.state = AuthStore.getState();
-    console.log(this.state);
-  }
-
-  componentDidMount() {
-    AuthStore.listen(this._onChange);
-  }
-
-  componentWillUnmount() {
-    LocationStore.unlisten(this._onChange);
-  }
-
-  _onChange = (state) =>{
-    this.setState(state);
-  }
+class LandingScene extends Component {
 
   _renderComponent = () => {
-    if (this.state.user) {
-      return <SpotifyProfile
-        user={ this.state.user }
-        onStartClick={() => {this._setModalVisible(true)}}
-        onLogoutClick={ this._handleLogoutTapped }/>
+    if (this.props.user) {
+      return (
+        <SpotifyProfile
+          user={ this.props.user }
+          onLogoutClick={ this._handleLogoutTapped }>
+          <Text style={styles.instructions}>
+            Some instructions here!
+          </Text>
+          <Button
+            style={styles.startButton}
+            onPress={this._navToSeed}>
+            Make my list!!
+          </Button>
+          <Text style={styles.instructions}>
+            Some other text right here!!
+          </Text>
+       </SpotifyProfile>);
     } else {
       return <SpotifyButton onClick={ this._handleConnectTapped }/>
     }
   }
 
-  _setModalVisible(visible) {
-    this.setState({modalVisible: visible});
-  }
-
-
   render() {
-    // <Modal
-    //   animationType='fade'
-    //   visible={this.state.modalVisible}
-    //   onRequestClose={() => {this._setModalVisible(false)}}>
-    //   <SeedScene />
-    // </Modal>
-
     return (
      <View style={styles.container}>
        {this._renderComponent()}
@@ -59,11 +55,15 @@ export default class LandingScene extends Component {
    );
  }
 
+ _navToSeed = () => {
+   this.props.startFlow();
+ }
+
  _handleConnectTapped = () => {
-   AuthActions.showLogin();
+   this.props.AuthActions.showLogin();
  }
 
  _handleLogoutTapped = () => {
-   AuthActions.logOut();
+   this.props.AuthActions.logOut();
  }
 }

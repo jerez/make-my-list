@@ -14,6 +14,8 @@ class AuthActions {
   }
   showLogin(locations) {
     SpotifyConnect.showLogin();
+    // just to dispatch action
+    return true;
   }
 }
 export default alt.createActions(AuthActions);

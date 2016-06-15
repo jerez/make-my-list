@@ -10,30 +10,29 @@ export default class SpotifyProfile extends Component {
     onLogoutClick: PropTypes.func.isRequired,
   };
 
-  /*
-    country
-    display_name
-    id
-    images
-    product
-  */
+  _renderChildren() {
+    if (this.props.children) {
+      return <View style={styles.content}>{this.props.children}</View>;
+    }
+    return null;
+  }
+
   render() {
     const imageSource = { uri: this.props.user.images[0].url};
-    console.log(this.props.user);
     return (
       <View style={styles.main}>
-        <Text style={styles.welcome}>
-          Welcome {this.props.user.display_name}!
-        </Text>
-        <Image
-          source={imageSource}
-          style={styles.picture}>
-        </Image>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
+        <View style={styles.contentWrapper}>
+          <Text style={styles.welcome}>
+            Welcome {this.props.user.display_name}!
+          </Text>
+          <Image
+            source={imageSource}
+            style={styles.picture}>
+          </Image>
+          {this._renderChildren()}
+        </View>
         <Button
-          style={styles.button}
+          style={styles.LogoutButton}
           onPress={this._handlePress}>
           Logout
         </Button>

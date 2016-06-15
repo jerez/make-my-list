@@ -1,6 +1,6 @@
 
 import React, { PropTypes, Component } from 'react';
-import {View, Text, Image } from 'react-native';
+import { View, Text } from 'react-native';
 import styles from './styles';
 
 export default class SeedScene extends Component {
@@ -9,28 +9,19 @@ export default class SeedScene extends Component {
   };
 
  render() {
-  //  return (
-  //    <NavigatorIOS
-  //      initialRoute={{
-  //        title: 'Home',
-  //        component: Landing,
-  //        passProps: { connectHelper: this.connectHelper },
-  //      }} />
-  //  );
+   console.log('DSFASD');
    return (
-     <View >
-      <Text style={styles.welcome}>
-        some text
-      </Text>
+     <View style={styles.content} >
+       <Text style={styles.contentText}>cgndsfbdfnsdf</Text>
+         <Text style={styles.contentText}>cgndsfbdfnsdf</Text>
+           <Text style={styles.contentText}>cgndsfbdfnsdf</Text>
+             <Text style={styles.contentText}>cgndsfbdfnsdf</Text>
+               <Text style={styles.contentText}>cgndsfbdfnsdf</Text>
+                 <Text style={styles.contentText}>cgndsfbdfnsdf</Text>
+                   <Text style={styles.contentText}>cgndsfbdfnsdf</Text>
+
+
      </View>
    );
- }
-
- _handleConnectTapped = () => {
-   this.props.connectHelper.showLogin();
- }
-
- _handleLogoutTapped = () => {
-   this.props.actions.logOut();
  }
 }

@@ -4,7 +4,7 @@
 
 import React, { Component } from 'react';
 import { AppRegistry, Linking } from 'react-native';
-import Landing from './js/scenes/Landing';
+import MainNavigator from './js/scenes/MainNavigator';
 import UrlHandler from './js/utils/UrlHandler';
 
 class MakeMyList extends Component {
@@ -22,7 +22,7 @@ class MakeMyList extends Component {
   }
 
   render() {
-    return (<Landing />);
+    return (<MainNavigator />);
   }
 }
 

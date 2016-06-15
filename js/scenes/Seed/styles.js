@@ -1,7 +1,12 @@
 import { StyleSheet } from 'react-native'
-
-const spotifyGreen = '#1ED760';
+import config from 'MakeMyList/js/utils/config';
 
 export default StyleSheet.create({
-
+  content: {
+    padding:20,
+    paddingTop:84,
+  },
+  contentText: {
+    color: config.UI.LtGrey,
+  }
 });

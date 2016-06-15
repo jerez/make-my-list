@@ -1,35 +1,39 @@
 import { StyleSheet } from 'react-native'
-
-const spotifyGreen = '#1ED760';
+import config from 'MakeMyList/js/utils/config';
 
 export default StyleSheet.create({
   main: {
+    flex:1,
+  },
+  contentWrapper: {
+    flex:1,
+    justifyContent: 'center',
     alignItems: 'center',
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    color: config.UI.DkGrey,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginTop: 20,
+  content: {
+    paddingVertical:10,
+    paddingHorizontal:20,
   },
   picture: {
     height: 100,
     borderRadius: 50,
     width: 100
   },
-  button: {
-    marginTop:20,
+  LogoutButton: {
     paddingVertical:10,
-    paddingHorizontal:50,
+    margin:5,
+    width:340,
     height:50,
     overflow:'hidden',
     borderRadius:25,
-    backgroundColor: 'black',
+    backgroundColor: config.UI.DkGrey,
     fontSize: 20,
-    color: spotifyGreen,
+    color: config.UI.Orange,
   },
 });
