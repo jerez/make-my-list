@@ -1,9 +1,9 @@
-import constants from '../../constants';
+import constants from './config';
 import url from 'url';
 import querystring from 'querystring';
 import { Buffer } from 'buffer';
 
-class ApiClient {
+class SpotifyApiClient {
 
   static performRequest(credentials, method, path){
     const requestUri = url.format({protocol:'https', host:constants.Spotify.apiHost, pathname:`v1/${path}`});
@@ -32,4 +32,4 @@ class ApiClient {
   }
 }
 
-export default ApiClient;
+export default SpotifyApiClient;

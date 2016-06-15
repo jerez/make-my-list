@@ -1,6 +1,6 @@
 import alt from '../alt';
 
-class SeedActions {
+class ContentActions {
   constructor() {
     this.generateActions(
       'fetchGenres',
@@ -12,4 +12,4 @@ class SeedActions {
     );
   }
 }
-export default alt.createActions(SeedActions);
+export default alt.createActions(ContentActions);

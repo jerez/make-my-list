@@ -1,10 +1,10 @@
-import constants from '../constants';
-import { Linking, AsyncStorage } from 'react-native';
+import constants from './config';
+import { Linking } from 'react-native';
 import url from 'url';
 import querystring from 'querystring';
 
 export default class SpotifyConnect {
-  showLogin() {
+  static showLogin() {
     const payload =  {
       client_id: constants.Spotify.clientId,
       response_type: 'code',
@@ -23,7 +23,7 @@ export default class SpotifyConnect {
     });
   }
 
-  isConnectRedirection(uri){
+  static isConnectRedirection(uri){
     const parsedUrl = url.parse(uri);
     return new Promise((resolve, reject) => {
       if (!this._canHandleUrl(parsedUrl)) {
@@ -34,7 +34,7 @@ export default class SpotifyConnect {
     });
   }
 
-  parseRedirection(parsedUrl){
+  static parseRedirection(parsedUrl){
     const qs = querystring.parse(parsedUrl.query)
     return new Promise((resolve, reject) => {
       if (qs.hasOwnProperty('code')) {
@@ -46,7 +46,7 @@ export default class SpotifyConnect {
     });
   }
 
-  _canHandleUrl = (parsedUrl) =>{
+  static _canHandleUrl = (parsedUrl) =>{
     return (parsedUrl.protocol === 'makemylist:' && parsedUrl.host === 'login');
   }
 }

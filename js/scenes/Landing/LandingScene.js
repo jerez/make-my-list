@@ -1,28 +1,58 @@
 
 import React, { PropTypes, Component } from 'react';
-import {View, Text, Image } from 'react-native';
+import {View, Modal } from 'react-native';
 import styles from './styles';
-import SpotifyButton from '../../components/SpotifyButton';
-import SpotifyProfile from '../../components/SpotifyProfile';
+import SpotifyButton from 'MakeMyList/js/components/SpotifyButton';
+import SpotifyProfile from 'MakeMyList/js/components/SpotifyProfile';
+
+import AuthActions from 'MakeMyList/js/flux/actions/AuthActions';
+import AuthStore from 'MakeMyList/js/flux/stores/AuthStore';
 
 export default class LandingScene extends Component {
 
-  static propTypes = {
-    connectHelper: PropTypes.shape({
-      showLogin: PropTypes.func.isRequired,
-    }).isRequired,
-  };
+  constructor(props){
+    super(props);
+    this.state = AuthStore.getState();
+    console.log(this.state);
+  }
+
+  componentDidMount() {
+    AuthStore.listen(this._onChange);
+  }
+
+  componentWillUnmount() {
+    LocationStore.unlisten(this._onChange);
+  }
+
+  _onChange = (state) =>{
+    this.setState(state);
+  }
 
   _renderComponent = () => {
-    if (this.props.user) {
-      return <SpotifyProfile user={ this.props.user } onLogoutClick={ this._handleLogoutTapped }/>
+    if (this.state.user) {
+      return <SpotifyProfile
+        user={ this.state.user }
+        onStartClick={() => {this._setModalVisible(true)}}
+        onLogoutClick={ this._handleLogoutTapped }/>
     } else {
       return <SpotifyButton onClick={ this._handleConnectTapped }/>
     }
   }
 
- render() {
-   return (
+  _setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
+
+  render() {
+    // <Modal
+    //   animationType='fade'
+    //   visible={this.state.modalVisible}
+    //   onRequestClose={() => {this._setModalVisible(false)}}>
+    //   <SeedScene />
+    // </Modal>
+
+    return (
      <View style={styles.container}>
        {this._renderComponent()}
      </View>
@@ -30,10 +60,10 @@ export default class LandingScene extends Component {
  }
 
  _handleConnectTapped = () => {
-   this.props.connectHelper.showLogin();
+   AuthActions.showLogin();
  }
 
  _handleLogoutTapped = () => {
-   this.props.actions.logOut();
+   AuthActions.logOut();
  }
 }

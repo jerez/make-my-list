@@ -1,10 +1,10 @@
 import AuthActions from '../actions/AuthActions';
-import ApiClient from './ApiClient'
+import SpotifyApiClient from 'MakeMyList/js/utils/SpotifyApiClient'
 
 const AuthSource = {
     requestToken: {
       remote(state) {
-        return ApiClient.requestToken(state.authCode);
+        return SpotifyApiClient.requestToken(state.authCode);
       },
       success: AuthActions.fetchUser,
       error: AuthActions.logInFailed,
@@ -12,7 +12,7 @@ const AuthSource = {
 
     requestUser: {
       remote(state) {
-        return ApiClient.performRequest(state, 'GET', 'me');
+        return SpotifyApiClient.performRequest(state, 'GET', 'me');
       },
       success: AuthActions.fetchUserSuccess,
       error: AuthActions.fetchUserFailed,
