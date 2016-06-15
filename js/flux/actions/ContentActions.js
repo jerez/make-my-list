@@ -6,8 +6,10 @@ class ContentActions {
       'fetchSeeds',
       'fetchGenresSuccess',
       'fetchGenresFailed',
-      'fetchTopContentSuccess',
-      'fetchTopContentFailed',
+      'fetchTopArtistsSuccess',
+      'fetchTopArtistsFailed',
+      'fetchTopTracksSuccess',
+      'fetchTopTracksFailed',
     );
   }
 }

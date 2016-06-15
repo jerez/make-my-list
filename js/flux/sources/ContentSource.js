@@ -10,14 +10,21 @@ const ContentSource = {
       error: ContentActions.fetchGenresFailed,
     },
 
-    requestTopContent: {
-      remote(state,credentials) {
-        return SpotifyApiClient.performRequest(credentials, 'GET', 'recommendations/available-genre-seeds');
+    requestTopArtists: {
+      remote(state, credentials) {
+        return SpotifyApiClient.performRequest(credentials, 'GET', 'me/top/artists');
       },
-      success: ContentActions.fetchGenresSuccess,
-      error: ContentActions.fetchGenresFailed,
-    }
+      success: ContentActions.fetchTopArtistsSuccess,
+      error: ContentActions.fetchTopArtistsFailed,
+    },
 
+    requestTopTracks: {
+      remote(state, credentials) {
+        return SpotifyApiClient.performRequest(credentials, 'GET', 'me/top/tracks');
+      },
+      success: ContentActions.fetchTopTracksSuccess,
+      error: ContentActions.fetchTopTracksFailed,
+    }
 };
 
 export default ContentSource

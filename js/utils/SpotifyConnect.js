@@ -9,7 +9,7 @@ export default class SpotifyConnect {
       client_id: config.Spotify.clientId,
       response_type: 'code',
       redirect_uri: config.Spotify.redirectUri,
-      scope: 'user-read-private',
+      scope: 'user-top-read playlist-modify-public',
       show_dialog:'true'
     };
 

@@ -10,7 +10,7 @@ export default class TracksView extends Component {
   };
 
   render() {
-    const items = this.props.tracks.map((title, index) =>  (<Text key={`item-${index}`}>{title}</Text>));
+    const items = this.props.tracks.map((track, index) =>  (<Text key={`item-${index}`}>{track.name}</Text>));
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scrollView} automaticallyAdjustContentInsets >

@@ -10,7 +10,7 @@ export default class Artists extends Component {
   };
 
   render() {
-    const items = this.props.artists.map((title, index) =>  (<Text key={`item-${index}`}>{title}</Text>));
+    const items = this.props.artists.map((artist, index) =>  (<Text key={`item-${index}`}>{artist.name}</Text>));
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scrollView} automaticallyAdjustContentInsets >
