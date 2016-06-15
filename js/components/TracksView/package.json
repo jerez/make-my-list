@@ -1,0 +1,6 @@
+{
+  "name": "TracksView",
+  "version": "0.0.1",
+  "main": "./TracksView.js",
+  "private": true
+}

@@ -8,7 +8,16 @@ const ContentSource = {
       },
       success: ContentActions.fetchGenresSuccess,
       error: ContentActions.fetchGenresFailed,
+    },
+
+    requestTopContent: {
+      remote(state,credentials) {
+        return SpotifyApiClient.performRequest(credentials, 'GET', 'recommendations/available-genre-seeds');
+      },
+      success: ContentActions.fetchGenresSuccess,
+      error: ContentActions.fetchGenresFailed,
     }
+
 };
 
 export default ContentSource

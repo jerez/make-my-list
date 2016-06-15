@@ -3,11 +3,9 @@ import alt from '../alt';
 class ContentActions {
   constructor() {
     this.generateActions(
-      'startFetch',
-      'fetchGenres',
+      'fetchSeeds',
       'fetchGenresSuccess',
       'fetchGenresFailed',
-      'fetchTopContent',
       'fetchTopContentSuccess',
       'fetchTopContentFailed',
     );

@@ -1,0 +1,6 @@
+{
+  "name": "GenresView",
+  "version": "0.0.1",
+  "main": "./GenresView.js",
+  "private": true
+}

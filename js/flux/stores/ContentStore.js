@@ -8,15 +8,25 @@ import AuthStore from './AuthStore';
 export default class ContentStore {
 
   constructor() {
+    this.genres = [];
+    this.artists = [];
+    this.tracks = [];
     this.bindActions(ContentActions);
     this.registerAsync(ContentSource);
   }
 
-  onStartFetch() {
+  onFetchSeeds() {
     this.waitFor(AuthStore);
     const credentials = AuthStore.getState();
-    // console.log(credentials);
     this.getInstance().requestGenres(credentials);
+  }
+
+  onFetchGenresSuccess(response) {
+    this.genres = response.genres;
+  }
+
+  onFetchGenresFailed(error) {
+    console.log('FetchGenresFailed::', error);
   }
 
 }
