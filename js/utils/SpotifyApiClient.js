@@ -12,10 +12,7 @@ class SpotifyApiClient {
       headers: {
         'Authorization': `${credentials.tokenType} ${credentials.authToken}`,
       }
-    }).then((response) => {
-      console.log(response);
-      return response.json(); 
-    });
+    }).then((response) => response.json());
   }
 
   static requestToken(code){

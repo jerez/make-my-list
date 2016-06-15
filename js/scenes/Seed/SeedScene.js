@@ -39,7 +39,9 @@ export default class SeedScene extends Component {
         titleStyle={styles.tabTitleStyle}
         selectedTitleStyle={styles.selectedTabTitleStyle}
         onPress={() => this.setState({ selectedTab: key })}>
-        {child}
+        <View style={styles.content}>
+          {child}
+        </View>
       </TabNavigator.Item>
     );
   }
