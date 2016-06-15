@@ -4,6 +4,33 @@ import LandingScene from './Landing';
 import SeedScene from './Seed';
 import config from 'MakeMyList/js/utils/config';
 
+import AltContainer from 'alt-container';
+import ContentActions from 'MakeMyList/js/flux/actions/ContentActions';
+import ContentStore from 'MakeMyList/js/flux/stores/ContentStore';
+import AuthActions from 'MakeMyList/js/flux/actions/AuthActions';
+import AuthStore from 'MakeMyList/js/flux/stores/AuthStore';
+
+
+class LandingSceneContainer extends Component {
+  render() {
+    return (
+      <AltContainer store={AuthStore} actions={{AuthActions: AuthActions}}>
+        <LandingScene {...this.props} />
+      </AltContainer>
+   );
+ }
+}
+
+class ContentSceneContainer extends Component {
+  render() {
+    return (
+      <AltContainer store={ContentStore} >
+        <SeedScene {...this.props} />
+      </AltContainer>
+   );
+ }
+}
+
 export default class MainNavigator extends Component {
 
   static propTypes = {
@@ -20,7 +47,7 @@ export default class MainNavigator extends Component {
         itemWrapperStyle={{flex:1, backgroundColor:config.UI.DkGrey}}
         initialRoute={{
           navigationBarHidden:true,
-          component: LandingScene,
+          component: LandingSceneContainer,
           title: 'Home',
           passProps: { startFlow: this.startFlow },
         }}
@@ -29,11 +56,11 @@ export default class MainNavigator extends Component {
   }
 
   startFlow = () => {
+    // ContentActions.startFetch();
     this.refs.mainNav.push({
       navigationBarHidden:false,
       title: 'Seed',
-      component: SeedScene,
+      component: ContentSceneContainer,
     })
   }
-
 }

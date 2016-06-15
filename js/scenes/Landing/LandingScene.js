@@ -8,21 +8,7 @@ import SpotifyProfile from 'MakeMyList/js/components/SpotifyProfile';
 
 import styles from './styles';
 
-import AltContainer from 'alt-container';
-import AuthActions from 'MakeMyList/js/flux/actions/AuthActions';
-import AuthStore from 'MakeMyList/js/flux/stores/AuthStore';
-
-export default class LandingSceneContainer extends Component {
-  render() {
-    return (
-      <AltContainer store={AuthStore} actions={{AuthActions: AuthActions}}>
-        <LandingScene {...this.props} />
-      </AltContainer>
-   );
- }
-}
-
-class LandingScene extends Component {
+export default  class LandingScene extends Component {
 
   _renderComponent = () => {
     if (this.props.user) {

@@ -13,9 +13,6 @@ export default class SpotifyButton extends Component {
   render() {
     return (
       <View style={styles.main}>
-        <Text>
-          CONNECT TO:
-        </Text>
         <Button containerStyle={styles.container}
           style={styles.default}
           onPress={this._handlePress}>
