@@ -11,6 +11,7 @@ export default class ContentStore {
     this.genres = [];
     this.artists = [];
     this.tracks = [];
+    this.selectedItems = [];
     this.bindActions(ContentActions);
     this.registerAsync(ContentSource);
   }
@@ -31,6 +32,7 @@ export default class ContentStore {
   }
 
   onFetchSeeds() {
+    this.selectedItems = [];
     this.waitFor(AuthStore);
     const credentials = AuthStore.getState();
     this.getInstance().requestTopArtists(credentials);
@@ -59,8 +61,14 @@ export default class ContentStore {
         ds = this.tracks;
         break;
     }
+    //TOGGLE SELECTED FLAG
     const index = ds.findIndex(x => x.id === item.id)
     ds[index].selected = !item.selected;
+
+    //UPDATE SELECTED SET
+    this.selectedItems = [this.genres, this.artists, this.tracks]
+    .reduce((first, second) => first.concat(second), [])
+    .filter((item) => item.selected);
   }
 
   onFetchTopArtistsFailed(error) {

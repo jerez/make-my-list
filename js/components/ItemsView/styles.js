@@ -11,6 +11,12 @@ const rowStyle = {
   borderRadius: 5,
 }
 
+export const itemHighlight = {
+  genre: config.UI.Blue,
+  artist: config.UI.Orange,
+  track: config.UI.Green,
+}
+
 export default StyleSheet.create({
   container: {
     flex:1,
@@ -34,8 +40,4 @@ export default StyleSheet.create({
     flex: 1,
     color: config.UI.LtGrey,
   },
-  selectedText: {
-    flex: 1,
-    color: config.UI.Green,
-  }
 });

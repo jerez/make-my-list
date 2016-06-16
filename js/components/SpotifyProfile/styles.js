@@ -4,6 +4,7 @@ import config from 'MakeMyList/js/utils/config';
 export default StyleSheet.create({
   main: {
     flex:1,
+    alignItems: 'center',
   },
   contentWrapper: {
     flex:1,
@@ -26,14 +27,13 @@ export default StyleSheet.create({
     width: 100
   },
   LogoutButton: {
-    paddingVertical:10,
+    paddingVertical:5,
     margin:5,
-    width:340,
-    height:50,
+    width:320,
+    height:30,
     overflow:'hidden',
-    borderRadius:25,
+    borderRadius:15,
     backgroundColor: config.UI.DkGrey,
-    fontSize: 20,
     color: config.UI.Orange,
   },
 });

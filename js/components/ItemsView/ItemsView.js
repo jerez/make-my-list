@@ -1,7 +1,7 @@
 
 import React, { PropTypes, Component } from 'react';
-import {View, ListView, ScrollView, TouchableHighlight, Text } from 'react-native';
-import styles from './styles';
+import {View, TouchableHighlight, Text } from 'react-native';
+import styles, {itemHighlight} from './styles';
 
 export default class ItemsView extends Component {
 
@@ -11,25 +11,32 @@ export default class ItemsView extends Component {
   };
 
   _renderRow(item, index) {
-  return (
-      <TouchableHighlight key={`item-${index}`}
-        onPress={ () => this.props.tapCallback(item) } underlayColor='rgba(0,0,0,0)'>
-          <View style={item.selected ? styles.selected : styles.row}>
-            <Text style={item.selected ? styles.selectedText : styles.text}>
-              {item.label}
-            </Text>
-          </View>
-      </TouchableHighlight>
-    );
+    const rowStyle = item.selected
+      ? [styles.selected, {borderColor: itemHighlight[item.type]}]
+      : styles.row;
+    const textStyle = item.selected
+      ? [styles.selectedText, {color: itemHighlight[item.type]}]
+      : styles.text;
+
+    return (
+        <TouchableHighlight key={`item-${index}`}
+          onPress={ () => this.props.tapCallback(item) } underlayColor='rgba(0,0,0,0)'>
+            <View style={rowStyle}>
+              <Text style={textStyle}>
+                {item.label}
+              </Text>
+            </View>
+        </TouchableHighlight>
+      );
   }
 
   render() {
     if (this.props.items.length > 0) {
       return (
         <View style={styles.container}>
-          <ScrollView contentContainerStyle={styles.list} automaticallyAdjustContentInsets={false} >
+          <View style={styles.list} >
               {this.props.items.map((item, index) =>  this._renderRow(item, index))}
-          </ScrollView>
+          </View>
         </View>);
     }
     return null;

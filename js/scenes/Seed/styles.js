@@ -2,33 +2,43 @@ import { StyleSheet } from 'react-native'
 import config from 'MakeMyList/js/utils/config';
 
 export default StyleSheet.create({
-  content: {
+  container: {
     flex:1,
-    padding:20,
     marginTop:64,
-    marginBottom:44,
+    marginBottom:10,
+    marginHorizontal:10,
   },
-  contentText: {
-    color: config.UI.LtGrey,
-  },
-  tabBarStyle:{
-    height: 44,
-    backgroundColor: config.UI.DkGrey,
-  },
-  tabStyle:{
-    flex: 1,
-    height: 44,
-    justifyContent: 'center',
-  },
-  tabTitleStyle:{
-    color: config.UI.Grey,
-    backgroundColor: config.UI.DkGrey,
-    fontSize: 20
-  },
-  selectedTabTitleStyle:{
+  title:{
     color: config.UI.DkGrey,
-    backgroundColor: config.UI.LtGrey,
+    textAlign: 'center',
     fontSize: 20,
-    height: 44,
+    padding: 5,
+  },
+  instructions:{
+    color: config.UI.Grey,
+    textAlign: 'center',
+    padding: 5,
+  },
+  box:{
+    padding:10,
+    marginVertical:5,
+    borderColor: config.UI.DKGrey,
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  resultsTitle:{
+    color: config.UI.DkGrey,
+    textAlign: 'center',
+    marginBottom:5,
+  },
+  nextButton: {
+    margin: 5,
+    paddingVertical:5,
+    height:30,
+    overflow:'hidden',
+    borderRadius:15,
+    borderColor: config.UI.Blue,
+    borderWidth: 1,
+    color: config.UI.Blue,
   },
 });

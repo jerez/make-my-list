@@ -12,15 +12,16 @@ export default StyleSheet.create({
     color: config.UI.Grey,
   },
   startButton: {
+    height:50,
+    width:300,
     margin:20,
     paddingVertical:10,
     paddingHorizontal:50,
-    height:50,
-    overflow:'hidden',
     borderRadius:25,
-    backgroundColor: config.UI.Green,
     fontSize: 20,
-    color: config.UI.White,
+    borderColor: config.UI.Blue,
+    borderWidth: 1,
+    color: config.UI.Blue,
   },
 
 });
