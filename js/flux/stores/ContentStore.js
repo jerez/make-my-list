@@ -22,13 +22,20 @@ export default class ContentStore {
     this.artists = null;
     this.tracks = null;
     this.selectedItems = null;
+    this.recommendations = null;
   }
 
-  _buidGenres(artists){
+  _buidGenresFromArtists(artists){
     const flattened =  artists.map((artist) => artist.genres )
     .reduce((first, second) => first.concat(second), [])
     .filter((elem, pos, arr) => arr.indexOf(elem) == pos);
     return flattened.map((genre, index) => {
+      return { label: genre, id:index, type:'genre', selected:false };
+    });
+  }
+
+  _buidGenresFromResponse(response){
+    return response.genres.map((genre, index) => {
       return { label: genre, id:index, type:'genre', selected:false };
     });
   }
@@ -42,13 +49,17 @@ export default class ContentStore {
   onFetchSeeds() {
     this.waitFor(AuthStore);
     const credentials = AuthStore.getState();
+    this.getInstance().requestGenres(credentials);
     this.getInstance().requestTopArtists(credentials);
     this.getInstance().requestTopTracks(credentials);
   }
 
+  onFetchGenresSuccess(response) {
+    this.genres = this._buidGenresFromResponse(response);
+  }
+
   onFetchTopArtistsSuccess(response) {
     this.artists = this._mapItems(response.items);
-    this.genres = this._buidGenres(response.items);
   }
 
   onFetchTopTracksSuccess(response) {
@@ -78,12 +89,30 @@ export default class ContentStore {
     .filter((item) => item.selected);
   }
 
+  onGetRecommendations(){
+    this.waitFor(AuthStore);
+    const credentials = AuthStore.getState();
+    this.getInstance().requestRecommendations(credentials);
+  }
+
+  onGetRecommendationsSuccess(response){
+    console.log(response);
+  }
+
+  onFetchGenresFailed(error) {
+    console.log('FetchGenresFailed::', error);
+  }
+
   onFetchTopArtistsFailed(error) {
     console.log('FetchTopArtistsFailed::', error);
   }
 
   onFetchTopTracksFailed(error) {
     console.log('FetchTopTracksFailed::', error);
+  }
+
+  onGetRecommendationsFailed(error) {
+    console.log('getRecommendationsFailed::', error);
   }
 }
 

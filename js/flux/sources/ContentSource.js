@@ -33,6 +33,14 @@ const ContentSource = {
       },
       success: ContentActions.fetchTopTracksSuccess,
       error: ContentActions.fetchTopTracksFailed,
+    },
+
+    requestRecommendations: {
+      remote(state, credentials) {
+        return SpotifyApiClient.getRecommendations(credentials, state.selectedItems);
+      },
+      success: ContentActions.getRecommendationsSuccess,
+      error: ContentActions.getRecommendationsFailed,
     }
 };
 

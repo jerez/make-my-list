@@ -36,7 +36,7 @@ export default class SeedScene extends Component {
           <ItemsView items={this.props.selectedItems} tapCallback={this.props.ContentActions.selectItem} />
           <Button
             style={styles.nextButton}
-            onPress={this._handlePress}>
+            onPress={this.props.ContentActions.getRecommendations}>
             Next
           </Button>
         </View>);

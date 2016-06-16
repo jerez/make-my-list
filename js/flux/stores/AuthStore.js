@@ -55,7 +55,6 @@ export default class AuthStore {
   }
 
   onFetchUser(credentials) {
-    console.log(credentials);
     this.authToken = credentials.access_token;
     this.refreshToken = credentials.refresh_token;
     this.tokenType = credentials.token_type;
