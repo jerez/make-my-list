@@ -8,6 +8,7 @@ class ContentActions {
       'fetchTopArtistsFailed',
       'fetchTopTracksSuccess',
       'fetchTopTracksFailed',
+      'selectItem',
     );
   }
 }

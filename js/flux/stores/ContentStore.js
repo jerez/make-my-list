@@ -46,6 +46,23 @@ export default class ContentStore {
     this.tracks = this._mapItems(response.items);
   }
 
+  onSelectItem(item) {
+    let ds = [];
+    switch (item.type) {
+      case 'artist':
+        ds = this.artists;
+        break;
+      case 'genre':
+        ds = this.genres;
+        break;
+      case 'track':
+        ds = this.tracks;
+        break;
+    }
+    const index = ds.findIndex(x => x.id === item.id)
+    ds[index].selected = !item.selected;
+  }
+
   onFetchTopArtistsFailed(error) {
     console.log('FetchTopArtistsFailed::', error);
   }

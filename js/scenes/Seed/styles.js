@@ -4,7 +4,9 @@ import config from 'MakeMyList/js/utils/config';
 export default StyleSheet.create({
   content: {
     flex:1,
-    paddingTop:64,
+    padding:20,
+    marginTop:64,
+    marginBottom:44,
   },
   contentText: {
     color: config.UI.LtGrey,

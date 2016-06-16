@@ -31,7 +31,7 @@ class ContentSceneContainer extends Component {
     return (
       <View style={{flex:1}}>
         <StatusBar barStyle='light-content'/>
-        <AltContainer store={ContentStore} >
+        <AltContainer store={ContentStore} actions={{ContentActions: ContentActions}}>
           <SeedScene {...this.props} />
         </AltContainer>
       </View>

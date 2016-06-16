@@ -14,8 +14,8 @@ export default class ItemsView extends Component {
   return (
       <TouchableHighlight key={`item-${index}`}
         onPress={ () => this.props.tapCallback(item) } underlayColor='rgba(0,0,0,0)'>
-          <View style={styles.row}>
-            <Text style={styles.text}>
+          <View style={item.selected ? styles.selected : styles.row}>
+            <Text style={item.selected ? styles.selectedText : styles.text}>
               {item.label}
             </Text>
           </View>

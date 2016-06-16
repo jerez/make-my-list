@@ -15,10 +15,6 @@ export default class SeedScene extends Component {
     this.state = {selectedTab:'Genres'}
   }
 
-  _selectItem = (item) => {
-    console.log(item);
-  }
-
   _renderTab = (key) =>{
     let items = [];
     switch (key) {
@@ -41,7 +37,7 @@ export default class SeedScene extends Component {
         selectedTitleStyle={styles.selectedTabTitleStyle}
         onPress={() => this.setState({ selectedTab: key })}>
         <View style={styles.content}>
-          <ItemsView items={items} tapCallback={this._selectItem} />
+          <ItemsView items={items} tapCallback={this.props.ContentActions.selectItem} />
         </View>
       </TabNavigator.Item>
     );
