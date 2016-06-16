@@ -2,10 +2,7 @@
 import React, { PropTypes, Component } from 'react';
 import { View, Text } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
-
-import GenresView from 'MakeMyList/js/components/GenresView';
-import ArtistsView from 'MakeMyList/js/components/ArtistsView';
-import TracksView from 'MakeMyList/js/components/TracksView';
+import ItemsView from 'MakeMyList/js/components/ItemsView';
 
 import styles from './styles';
 
@@ -18,17 +15,21 @@ export default class SeedScene extends Component {
     this.state = {selectedTab:'Genres'}
   }
 
+  _selectItem = (item) => {
+    console.log(item);
+  }
+
   _renderTab = (key) =>{
-    let child;
+    let items = [];
     switch (key) {
       case 'Genres':
-        child = (<GenresView genres={this.props.genres} />);
+        items = this.props.genres;
         break;
       case 'Artists':
-        child = (<ArtistsView artists={this.props.artists} />);
+        items = this.props.artists;
         break;
       case 'Tracks':
-        child = (<TracksView tracks={this.props.tracks} />);
+        items = this.props.tracks;
         break;
     }
     return (
@@ -40,7 +41,7 @@ export default class SeedScene extends Component {
         selectedTitleStyle={styles.selectedTabTitleStyle}
         onPress={() => this.setState({ selectedTab: key })}>
         <View style={styles.content}>
-          {child}
+          <ItemsView items={items} tapCallback={this._selectItem} />
         </View>
       </TabNavigator.Item>
     );
@@ -53,7 +54,6 @@ export default class SeedScene extends Component {
         {this._renderTab('Genres')}
         {this._renderTab('Artists')}
         {this._renderTab('Tracks')}
-    </TabNavigator>
-   );
- }
+    </TabNavigator>);
+  }
 }

@@ -1,0 +1,6 @@
+{
+  "name": "ItemsView",
+  "version": "0.0.1",
+  "main": "./ItemsView.js",
+  "private": true
+}

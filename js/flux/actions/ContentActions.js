@@ -4,8 +4,6 @@ class ContentActions {
   constructor() {
     this.generateActions(
       'fetchSeeds',
-      'fetchGenresSuccess',
-      'fetchGenresFailed',
       'fetchTopArtistsSuccess',
       'fetchTopArtistsFailed',
       'fetchTopTracksSuccess',

@@ -15,28 +15,35 @@ export default class ContentStore {
     this.registerAsync(ContentSource);
   }
 
+  _buidGenres(artists){
+    const flattened =  artists.map((artist) => artist.genres )
+    .reduce((first, second) => first.concat(second), [])
+    .filter((elem, pos, arr) => arr.indexOf(elem) == pos);
+    return flattened.map((genre, index) => {
+      return { label: genre, id:index, type:'genre', selected:false };
+    });
+  }
+
+  _mapItems(items){
+    return items.map((item) => {
+      return { label: item.name, id:item.id, type:item.type, selected:false };
+    });
+  }
+
   onFetchSeeds() {
     this.waitFor(AuthStore);
     const credentials = AuthStore.getState();
-    this.getInstance().requestGenres(credentials);
     this.getInstance().requestTopArtists(credentials);
     this.getInstance().requestTopTracks(credentials);
   }
 
-  onFetchGenresSuccess(response) {
-    this.genres = response.genres;
-  }
-
   onFetchTopArtistsSuccess(response) {
-    this.artists = response.items;
+    this.artists = this._mapItems(response.items);
+    this.genres = this._buidGenres(response.items);
   }
 
   onFetchTopTracksSuccess(response) {
-    this.tracks = response.items;
-  }
-
-  onFetchGenresFailed(error) {
-    console.log('FetchGenresFailed::', error);
+    this.tracks = this._mapItems(response.items);
   }
 
   onFetchTopArtistsFailed(error) {
