@@ -1,0 +1,6 @@
+{
+  "name": "OptionsScene",
+  "version": "0.0.1",
+  "main": "./OptionsScene.js",
+  "private": true
+}

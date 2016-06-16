@@ -5,13 +5,13 @@ import config from 'MakeMyList/js/utils/config';
 
 import LandingScene from './Landing';
 import SeedScene from './Seed';
+import OptionsScene from './Options';
 
 import AltContainer from 'alt-container';
 import ContentActions from 'MakeMyList/js/flux/actions/ContentActions';
 import ContentStore from 'MakeMyList/js/flux/stores/ContentStore';
 import AuthActions from 'MakeMyList/js/flux/actions/AuthActions';
 import AuthStore from 'MakeMyList/js/flux/stores/AuthStore';
-
 
 class LandingSceneContainer extends Component {
   render() {
@@ -39,6 +39,19 @@ class ContentSceneContainer extends Component {
  }
 }
 
+class OptionsSceneContainer extends Component {
+  render() {
+    return (
+      <View style={{flex:1}}>
+        <StatusBar barStyle='light-content'/>
+        <AltContainer store={ContentStore} actions={{ContentActions: ContentActions}}>
+          <OptionsScene {...this.props} />
+        </AltContainer>
+      </View>
+   );
+ }
+}
+
 export default class MainNavigator extends Component {
 
   static propTypes = {
@@ -57,7 +70,7 @@ export default class MainNavigator extends Component {
           navigationBarHidden:true,
           component: LandingSceneContainer,
           title: 'Home',
-          passProps: { startFlow: this.startFlow },
+          passProps: { next: this.startFlow },
         }}
       />
     );
@@ -69,6 +82,16 @@ export default class MainNavigator extends Component {
       navigationBarHidden:false,
       title: 'Seed',
       component: ContentSceneContainer,
+      passProps: { next: this.showOptions },
+    })
+  }
+
+  showOptions = () => {
+    this.refs.mainNav.push({
+      navigationBarHidden:false,
+      title: 'Options',
+      component: OptionsSceneContainer,
+      passProps: { next: ContentActions.getRecommendations },
     })
   }
 }

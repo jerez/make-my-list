@@ -15,13 +15,13 @@ export default  class LandingScene extends Component {
       return (
         <SpotifyProfile
           user={ this.props.user }
-          onLogoutClick={ this._handleLogoutTapped }>
+          onLogoutClick={  this.props.AuthActions.logout }>
           <Text style={styles.instructions}>
             Some instructions here!
           </Text>
           <Button
             style={styles.startButton}
-            onPress={this._navToSeed}>
+            onPress={this.props.next}>
             Make my list!!
           </Button>
           <Text style={styles.instructions}>
@@ -29,7 +29,7 @@ export default  class LandingScene extends Component {
           </Text>
        </SpotifyProfile>);
     } else {
-      return <SpotifyButton onClick={ this._handleConnectTapped }/>
+      return <SpotifyButton onClick={ this.props.AuthActions.showLogin }/>
     }
   }
 
@@ -39,17 +39,5 @@ export default  class LandingScene extends Component {
        {this._renderComponent()}
      </View>
    );
- }
-
- _navToSeed = () => {
-   this.props.startFlow();
- }
-
- _handleConnectTapped = () => {
-   this.props.AuthActions.showLogin();
- }
-
- _handleLogoutTapped = () => {
-   this.props.AuthActions.logout();
  }
 }
