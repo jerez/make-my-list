@@ -3,6 +3,9 @@ import SpotifyApiClient from 'MakeMyList/js/utils/SpotifyApiClient'
 
 const ContentSource = {
     requestGenres: {
+      local(state) {
+        return state.genres ? state.genres : null;
+      },
       remote(state,credentials) {
         return SpotifyApiClient.performRequest(credentials, 'GET', 'recommendations/available-genre-seeds');
       },
@@ -11,6 +14,9 @@ const ContentSource = {
     },
 
     requestTopArtists: {
+      local(state) {
+        return state.artists ? state.artists : null;
+      },
       remote(state, credentials) {
         return SpotifyApiClient.performRequest(credentials, 'GET', 'me/top/artists');
       },
@@ -19,6 +25,9 @@ const ContentSource = {
     },
 
     requestTopTracks: {
+      local(state) {
+        return state.tracks ? state.tracks : null;
+      },
       remote(state, credentials) {
         return SpotifyApiClient.performRequest(credentials, 'GET', 'me/top/tracks');
       },

@@ -2,18 +2,26 @@
 import alt from '../alt';
 import ContentActions from '../actions/ContentActions';
 import ContentSource from '../sources/ContentSource';
+import AuthActions from '../actions/AuthActions';
 import AuthStore from './AuthStore';
-
 
 export default class ContentStore {
 
   constructor() {
-    this.genres = [];
-    this.artists = [];
-    this.tracks = [];
-    this.selectedItems = [];
+    this._initializeState();
     this.bindActions(ContentActions);
     this.registerAsync(ContentSource);
+    this.bindListeners({
+      _initializeState: AuthActions.LOGIN,
+      _initializeState: AuthActions.LOGOUT,
+    });
+  }
+
+  _initializeState(){
+    this.genres = null;
+    this.artists = null;
+    this.tracks = null;
+    this.selectedItems = null;
   }
 
   _buidGenres(artists){
@@ -32,7 +40,6 @@ export default class ContentStore {
   }
 
   onFetchSeeds() {
-    this.selectedItems = [];
     this.waitFor(AuthStore);
     const credentials = AuthStore.getState();
     this.getInstance().requestTopArtists(credentials);

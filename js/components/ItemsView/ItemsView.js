@@ -6,7 +6,7 @@ import styles, {itemHighlight} from './styles';
 export default class ItemsView extends Component {
 
   static propTypes = {
-    items: PropTypes.array.isRequired,
+    items: PropTypes.array,
     tapCallback: PropTypes.func.isRequired,
   };
 
@@ -31,7 +31,7 @@ export default class ItemsView extends Component {
   }
 
   render() {
-    if (this.props.items.length > 0) {
+    if (this.props.items) {
       return (
         <View style={styles.container}>
           <View style={styles.list} >

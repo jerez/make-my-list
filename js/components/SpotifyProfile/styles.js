@@ -28,7 +28,7 @@ export default StyleSheet.create({
   },
   LogoutButton: {
     paddingVertical:5,
-    margin:5,
+    margin:20,
     width:320,
     height:30,
     overflow:'hidden',

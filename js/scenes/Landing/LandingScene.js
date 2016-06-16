@@ -50,6 +50,6 @@ export default  class LandingScene extends Component {
  }
 
  _handleLogoutTapped = () => {
-   this.props.AuthActions.logOut();
+   this.props.AuthActions.logout();
  }
 }

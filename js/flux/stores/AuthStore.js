@@ -80,7 +80,7 @@ export default class AuthStore {
     this._clearState();
   }
 
-  onLogOut() {
+  onLogout() {
     console.log('logout');
     this._clearState();
   }

@@ -1,6 +1,6 @@
 
 import React, { PropTypes, Component } from 'react';
-import { View, ScrollView, Text, SegmentedControlIOS } from 'react-native';
+import { View, ScrollView, Text, SegmentedControlIOS, AlertIOS } from 'react-native';
 
 import Button from 'react-native-button';
 import ItemsView from 'MakeMyList/js/components/ItemsView';
@@ -17,8 +17,19 @@ export default class SeedScene extends Component {
     this.state = { selectedIndex:0 };
   }
 
+  _selectItem = (item) => {
+    if (!item.selected && (this.props.selectedItems && this.props.selectedItems.length === 5)) {
+      AlertIOS.alert(
+       'Your seed-box is full!',
+       'Just up to 5 elements are allowed.\n\nTip: tap again on selected ones to remove it!'
+      );
+    } else {
+      this.props.ContentActions.selectItem(item);
+    }
+  }
+
   _renderSelectedBox = () => {
-    if(this.props.selectedItems.length > 0){
+    if(this.props.selectedItems && this.props.selectedItems.length){
       return (
         <View style={styles.box}>
           <Text style={styles.resultsTitle}>Check your choices and continue!</Text>
@@ -47,7 +58,7 @@ export default class SeedScene extends Component {
           onChange={(event) => this.setState({selectedIndex:event.nativeEvent.selectedSegmentIndex})}
           tintColor={config.UI.DkGrey} />
         <ScrollView style={styles.box} automaticallyAdjustContentInsets={false}>
-          <ItemsView items={items} tapCallback={this.props.ContentActions.selectItem}/>
+          <ItemsView items={items} tapCallback={this._selectItem}/>
         </ScrollView>
         {this._renderSelectedBox()}
       </View>);

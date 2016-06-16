@@ -9,7 +9,7 @@ class AuthActions {
       'fetchUser',
       'fetchUserSuccess',
       'fetchUserFailed',
-      'logOut',
+      'logout',
     );
   }
   showLogin(locations) {
