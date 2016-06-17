@@ -40,4 +40,9 @@ export default StyleSheet.create({
     backgroundColor: config.UI.DkGrey,
     overflow: 'hidden',
   },
+  modalContent: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });

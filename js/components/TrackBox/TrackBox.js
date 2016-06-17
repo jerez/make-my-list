@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 import React, { PropTypes, Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Modal } from 'react-native';
 import Button from 'react-native-button';
 import styles, {itemHighlight} from './styles';
 
@@ -17,14 +17,37 @@ export default class TrackBox extends Component {
     }).isRequired,
   };
 
+  constructor(props){
+    super(props);
+    this.state = {modalVisible: false};
+  }
+
+  //Preview urls are plain mp3 object not a streaming object
   _renderPreviewButton = () => {
     if (this.props.track.previewUrl) {
       return (
-        <Button containerStyle={{justifyContent:'center'}}
-          style={styles.previewButton}
-          onPress={this._handleOnDetailsClick}>
-          Preview
-        </Button>
+        <View style={{justifyContent:'center'}}>
+          <Button
+            style={styles.previewButton}
+            onPress={() => this.setState({modalVisible: true})}>
+            Preview
+          </Button>
+          <Modal
+             animationType='slide'
+             transparent={true}
+             visible={this.state.modalVisible}>
+             <View style={styles.modalContent}>
+               <View style={{ height:200, width:300, backgroundColor:'white', borderRadius:3, overflow:'hidden', padding:10}}>
+                 <Text >{this.props.track.name}</Text>
+                   <Button
+                    style={styles.modalButton}
+                    onPress={() => this.setState({modalVisible: false})}>
+                    Close
+                  </Button>
+                </View>
+             </View>
+          </Modal>
+        </View>
       );
     }
   }
