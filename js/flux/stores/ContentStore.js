@@ -61,6 +61,7 @@ export default class ContentStore {
     return response.tracks.map((track)=>{
       let leanTrack = {
         id: track.id,
+        uri: track.uri,
         name: track.name,
         previewUrl: track.preview_url,
         album: track.album.name,

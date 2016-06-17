@@ -61,6 +61,29 @@ class SpotifyApiClient {
       }
     }).then((response) => response.json());
   }
+
+  static createPlayList(credentials, recommendation){
+    const requestUri = url.format({protocol:'https', host:config.Spotify.apiHost, pathname:`v1/users/${credentials.user.id}/playlists`});
+    return fetch(requestUri, {
+      method: 'POST',
+      body: JSON.stringify({name: recommendation.name}),
+      headers: {
+        'Authorization': `${credentials.tokenType} ${credentials.authToken}`,
+        'Content-Type': 'application/json',
+      }
+    }).then((plResponse) => {
+      const pl = plResponse.json();
+      const dataPayload = { uris: recommendation.tracks.map((track) => track.uri)};
+      return fetch(`${pl.href}/tracks`, {
+        method: 'POST',
+        body: JSON.stringify(dataPayload),
+        headers: {
+          'Authorization': `${credentials.tokenType} ${credentials.authToken}`,
+          'Content-Type': 'application/json',
+        }
+      }).then((response) => response.json());
+    });
+  }
 }
 
 export default SpotifyApiClient;
