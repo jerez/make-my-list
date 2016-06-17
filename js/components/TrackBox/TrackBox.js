@@ -1,9 +1,10 @@
 import moment from 'moment';
 
 import React, { PropTypes, Component } from 'react';
-import { View, Text, Image, Modal } from 'react-native';
+import { View, Text, Image, Modal, NativeModules, NativeAppEventEmitter } from 'react-native';
 import Button from 'react-native-button';
 import styles, {itemHighlight} from './styles';
+
 
 export default class TrackBox extends Component {
 
@@ -22,27 +23,56 @@ export default class TrackBox extends Component {
     this.state = {modalVisible: false};
   }
 
-  //Preview urls are plain mp3 object not a streaming object
+  componentDidMount(){
+    if (this.props.track.previewUrl) {
+      this.audio = NativeModules.RNAudioPlayerURL;
+      this.endedListener = NativeAppEventEmitter.addListener('AudioEnded', (trigger) => this._stopPreview() );
+    }
+  }
+
+  componentWillUnmount(){
+    if (this.audio) {
+      this.audio.pause();
+      this.endedListener.remove();
+      this.audio = null;
+    }
+  }
+
+  _previewTrack = () => {
+    if (this.audio) {
+      this.audio.initWithURL(this.props.track.previewUrl);
+      this.setState({modalVisible: true});
+      this.audio.play();
+    }
+  }
+
+  _stopPreview = () => {
+    if (this.audio) {
+      this.audio.pause();
+      this.setState({modalVisible: false});
+    }
+  }
+
   _renderPreviewButton = () => {
     if (this.props.track.previewUrl) {
       return (
         <View style={{justifyContent:'center'}}>
           <Button
             style={styles.previewButton}
-            onPress={() => this.setState({modalVisible: true})}>
+            onPress={this._previewTrack}>
             Preview
           </Button>
           <Modal
-             animationType='slide'
+             animationType='fade'
              transparent={true}
              visible={this.state.modalVisible}>
              <View style={styles.modalContent}>
-               <View style={{ height:200, width:300, backgroundColor:'white', borderRadius:3, overflow:'hidden', padding:10}}>
-                 <Text >{this.props.track.name}</Text>
+               <View style={styles.modalBox}>
+                 <Text style={styles.modalTitle}>{this.props.track.name}</Text>
                    <Button
                     style={styles.modalButton}
-                    onPress={() => this.setState({modalVisible: false})}>
-                    Close
+                    onPress={this._stopPreview}>
+                    Stop preview
                   </Button>
                 </View>
              </View>
