@@ -11,7 +11,7 @@ import styles from './styles';
 export default  class LandingScene extends Component {
 
   _renderResultsButton = () => {
-    if(this.props.recommendations){
+    if(this.props.recommendations && this.props.recommendations.length){
       return(<Button
         style={styles.startButton}
         onPress={this.props.showResults}>
@@ -22,8 +22,6 @@ export default  class LandingScene extends Component {
 
   _renderComponent = () => {
     if (this.props.user) {
-      console.log(this.props);
-
       return (
         <SpotifyProfile
           user={ this.props.user }

@@ -44,6 +44,7 @@ export default class ContentStore {
 
   _handleSessionChange(){
     this._initializeState();
+    this.recommendations = null;
     AsyncStorage.removeItem(STORAGE_KEY);
   }
 
@@ -65,7 +66,7 @@ export default class ContentStore {
         album: track.album.name,
         artists: track.artists.map((artist)=>artist.name),
       };
-      if(track.album.images.length > 0){
+      if(track.album.images && track.album.images.length){
         leanTrack.image = track.album.images
         .reduce((first, second) => {
           if (first.heigh > second.height) return first;
@@ -143,7 +144,7 @@ export default class ContentStore {
     if(!this.recommendations){
       this.recommendations = [];
     }
-    if (response.tracks && response.tracks.length > 0) {
+    if (response.tracks && response.tracks.length) {
       this.recommendations.push({
         name: `mml-${moment().format('MMMM-DD-YYYY-hh-mm-ss')}`,
         created: Date.now(),

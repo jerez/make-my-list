@@ -9,41 +9,39 @@ import styles from './styles';
 
 export default class ResultsScene extends Component {
 
-  _handleOnSaveClick = () => {
-
+  _handleOnSaveClick = (item) => {
   }
 
-  _handleOnDeleteClick = () => {
-
+  _handleOnDeleteClick = (item) => {
+    this.props.ContentActions.deleteResult(item);
   }
 
-  _handleOnDetailsClick = () => {
-
+  _handleOnDetailsClick = (item) => {
   }
 
   _renderContent = () => {
-    if (this.props.recommendations) {
       return this.props.recommendations.map((item) =>
-      <ResultBox key={item.name} item={item}
-        onDeleteClick={this._handleOnDeleteClick}
-        onSaveClick={this._handleOnSaveClick}
-        onDetailsClick={this._handleOnDetailsClick}/>);
-    } else {
-      return (
-        <Text >
-          You don't have any recommendations :(
-        </Text>
-      );
-    }
+        <ResultBox key={item.name} item={item}
+          onDeleteClick={this._handleOnDeleteClick}
+          onSaveClick={this._handleOnSaveClick}
+          onDetailsClick={this._handleOnDetailsClick}/>);
   }
 
   render() {
-    return (
-      <View style={styles.container}>
+    if (this.props.recommendations && this.props.recommendations.length) {
+      return(
+        <View style={styles.container}>
         <ScrollView automaticallyAdjustContentInsets={false} >
           {this._renderContent()}
         </ScrollView>
-      </View>
-    );
+      </View>);
+    } else {
+      return (
+        <View style={styles.empty}>
+          <Text style={styles.emptyText}>
+            You don't have any recommendations :(
+          </Text>
+        </View>);
+    }
   }
 }

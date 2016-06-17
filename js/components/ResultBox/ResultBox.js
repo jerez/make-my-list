@@ -28,11 +28,11 @@ export default class ResultBox extends Component {
   };
 
   _handleOnSaveClick = () => {
-    this.props.onDeleteClick(this.props.item);
+    this.props.onSaveClick(this.props.item);
   }
 
   _handleOnDeleteClick = () => {
-    this.props.onSaveClick(this.props.item);
+    this.props.onDeleteClick(this.props.item);
   }
 
   _handleOnDetailsClick = () => {
