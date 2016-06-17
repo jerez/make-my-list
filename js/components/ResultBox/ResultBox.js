@@ -4,7 +4,6 @@ import React, { PropTypes, Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import Button from 'react-native-button';
 import styles, {itemHighlight} from './styles';
-import config from 'MakeMyList/js/utils/config';
 
 export default class ResultBox extends Component {
 
@@ -47,16 +46,6 @@ export default class ResultBox extends Component {
       .reduce((first, second) => first.concat(second), [])
       .filter((elem, index, self) => index == self.indexOf(elem));
     const artistsText = `Artists: ${artists.slice(0, 3).join(', ')}...`;
-
-    const buttonStyle ={
-      margin: 3,
-      paddingVertical:4,
-      height:20,
-      borderRadius:10,
-      fontSize:10,
-      width:80,
-      color: config.UI.White,
-    };
 
     return (
       <View
