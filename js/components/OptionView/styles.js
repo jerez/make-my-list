@@ -12,8 +12,15 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
   },
-  label: {
+  title: {
+    color: config.UI.DkGrey,
     textAlign:'center',
+    margin: 2
+  },
+  label: {
+    color: config.UI.Grey,
+    textAlign:'justify',
+    marginBottom: 5
   },
   group: {
     flexDirection: 'row',

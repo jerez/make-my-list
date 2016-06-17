@@ -8,10 +8,12 @@ import SeedScene from './Seed';
 import OptionsScene from './Options';
 
 import AltContainer from 'alt-container';
-import ContentActions from 'MakeMyList/js/flux/actions/ContentActions';
-import ContentStore from 'MakeMyList/js/flux/stores/ContentStore';
 import AuthActions from 'MakeMyList/js/flux/actions/AuthActions';
 import AuthStore from 'MakeMyList/js/flux/stores/AuthStore';
+import ContentActions from 'MakeMyList/js/flux/actions/ContentActions';
+import ContentStore from 'MakeMyList/js/flux/stores/ContentStore';
+import OptionsActions from 'MakeMyList/js/flux/actions/OptionsActions';
+import OptionsStore from 'MakeMyList/js/flux/stores/OptionsStore';
 
 class LandingSceneContainer extends Component {
   render() {
@@ -44,7 +46,7 @@ class OptionsSceneContainer extends Component {
     return (
       <View style={{flex:1}}>
         <StatusBar barStyle='light-content'/>
-        <AltContainer store={ContentStore} actions={{ContentActions: ContentActions}}>
+        <AltContainer store={OptionsStore} actions={{OptionsActions: OptionsActions}}>
           <OptionsScene {...this.props} />
         </AltContainer>
       </View>
@@ -67,8 +69,8 @@ export default class MainNavigator extends Component {
         ref='mainNav'
         itemWrapperStyle={{flex:1, backgroundColor:config.UI.LtGrey}}
         initialRoute={{
-          navigationBarHidden:true,
-          component: LandingSceneContainer,
+          navigationBarHidden:false,
+          component: OptionsSceneContainer,
           title: 'Home',
           passProps: { next: this.startFlow },
         }}
