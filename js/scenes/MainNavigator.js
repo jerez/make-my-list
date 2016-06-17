@@ -69,8 +69,8 @@ export default class MainNavigator extends Component {
         ref='mainNav'
         itemWrapperStyle={{flex:1, backgroundColor:config.UI.LtGrey}}
         initialRoute={{
-          navigationBarHidden:false,
-          component: OptionsSceneContainer,
+          navigationBarHidden:true,
+          component: LandingSceneContainer,
           title: 'Home',
           passProps: { next: this.startFlow },
         }}

@@ -19,4 +19,14 @@ export default StyleSheet.create({
     textAlign: 'center',
     padding: 5,
   },
+  nextButton: {
+    margin: 5,
+    paddingVertical:5,
+    height:30,
+    overflow:'hidden',
+    borderRadius:15,
+    borderColor: config.UI.Blue,
+    borderWidth: 1,
+    color: config.UI.Blue,
+  },
 });

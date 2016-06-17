@@ -4,6 +4,7 @@ import ContentActions from '../actions/ContentActions';
 import ContentSource from '../sources/ContentSource';
 import AuthActions from '../actions/AuthActions';
 import AuthStore from './AuthStore';
+import OptionsStore from './OptionsStore';
 
 export default class ContentStore {
 
@@ -91,8 +92,10 @@ export default class ContentStore {
 
   onGetRecommendations(){
     this.waitFor(AuthStore);
+    this.waitFor(OptionsStore);
     const credentials = AuthStore.getState();
-    this.getInstance().requestRecommendations(credentials);
+    const options = OptionsStore.getState().options;
+    this.getInstance().requestRecommendations(credentials, options);
   }
 
   onGetRecommendationsSuccess(response){

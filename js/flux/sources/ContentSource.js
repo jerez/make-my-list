@@ -36,8 +36,8 @@ const ContentSource = {
     },
 
     requestRecommendations: {
-      remote(state, credentials) {
-        return SpotifyApiClient.getRecommendations(credentials, state.selectedItems);
+      remote(state, credentials, options) {
+        return SpotifyApiClient.getRecommendations(credentials, state.selectedItems, options);
       },
       success: ContentActions.getRecommendationsSuccess,
       error: ContentActions.getRecommendationsFailed,

@@ -31,16 +31,26 @@ class SpotifyApiClient {
     }).then((response) => { return response.json(); });
   }
 
-  static getRecommendations(credentials, seed){
+  static getRecommendations(credentials, seed, options){
     const seedTracks = seed.filter((item)=>item.type==='track').map((item)=>item.id).join();
     const seedArtists = seed.filter((item)=>item.type==='artist').map((item)=>item.id).join();
     const seedGenres = seed.filter((item)=>item.type==='genre').map((item)=>item.label).join();
+    const seedOptions = options
+      .filter((option) => option.enabled)
+      .map((option) => {
+        return {[`target_${option.name}`]: option.value} ;
+      })
+      .reduce((result, item) => {
+        const key = Object.keys(item)[0];
+        result[key] = item[key];
+        return result;
+      }, {});
 
-    const payload =  {
+    const payload = Object.assign({
       seed_artists: seedArtists,
       seed_tracks: seedTracks,
       seed_genres: seedGenres,
-    };
+    }, seedOptions);
 
     const requestUri = url.format({protocol:'https', host:config.Spotify.apiHost, pathname:'v1/recommendations', query:payload});
 
