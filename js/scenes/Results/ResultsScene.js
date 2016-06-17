@@ -38,7 +38,6 @@ export default class ResultsScene extends Component {
   }
 
   render() {
-
     return (
       <View style={styles.container}>
         <ScrollView automaticallyAdjustContentInsets={false} >

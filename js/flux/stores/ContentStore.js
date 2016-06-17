@@ -20,19 +20,17 @@ export default class ContentStore {
     this.bindActions(ContentActions);
     this.registerAsync(ContentSource);
     this.bindListeners({
-      _initializeState: AuthActions.LOGIN,
-      _initializeState: AuthActions.LOGOUT,
+      _handleSessionChange: AuthActions.LOGIN,
+      _handleSessionChange: AuthActions.LOGOUT,
     });
   }
 
   async _loadSavedResults() {
     try {
-      const results = JSON.parse(await AsyncStorage.getItem(STORAGE_KEY));
-      if (results !== null){
-        this.recommendations = results;
-        this.getInstance().emitChange();
-      }
+      this.recommendations = JSON.parse(await AsyncStorage.getItem(STORAGE_KEY));
+      this.getInstance().emitChange();
     } catch (error) {
+      this.recommendations = null;
       console.log(error);
     }
   }
@@ -42,7 +40,11 @@ export default class ContentStore {
     this.artists = null;
     this.tracks = null;
     this.selectedItems = null;
-    this.recommendations = null;
+  }
+
+  _handleSessionChange(){
+    this._initializeState();
+    AsyncStorage.removeItem(STORAGE_KEY);
   }
 
   _buidGenresFromArtists(artists){
