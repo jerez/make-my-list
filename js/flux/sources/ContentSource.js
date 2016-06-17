@@ -41,7 +41,15 @@ const ContentSource = {
       },
       success: ContentActions.getRecommendationsSuccess,
       error: ContentActions.getRecommendationsFailed,
-    }
+    },
+
+    requestCreatePlaylist: {
+      remote(state, credentials, recommendation) {
+        return SpotifyApiClient.createPlayList(credentials, recommendation);
+      },
+      success: ContentActions.createPlaylistSuccess,
+      error: ContentActions.createPlaylistFailed,
+    },
 };
 
 export default ContentSource

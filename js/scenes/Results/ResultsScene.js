@@ -11,6 +11,7 @@ import styles from './styles';
 export default class ResultsScene extends Component {
 
   _handleOnSaveClick = (item) => {
+    this.props.ContentActions.createPlaylist(item);
   }
 
   _handleOnDeleteClick = (item) => {

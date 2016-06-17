@@ -163,6 +163,12 @@ export default class ContentStore {
     }
   }
 
+  onCreatePlaylist(recommendation){
+    this.waitFor(AuthStore);
+    const credentials = AuthStore.getState();
+    this.getInstance().requestCreatePlaylist(credentials, recommendation);
+  }
+
   onFetchGenresFailed(error) {
     console.log('FetchGenresFailed::', error);
   }
@@ -177,6 +183,10 @@ export default class ContentStore {
 
   onGetRecommendationsFailed(error) {
     console.log('getRecommendationsFailed::', error);
+  }
+
+  onCreatePlaylistFailed(error) {
+    console.log('CreatePlaylistFailed::', error);
   }
 }
 

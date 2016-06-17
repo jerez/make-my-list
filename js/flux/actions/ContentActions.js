@@ -14,7 +14,9 @@ class ContentActions {
       'getRecommendations',
       'getRecommendationsSuccess',
       'getRecommendationsFailed',
-      'deleteResult'
+      'deleteResult',
+      'createPlaylist',
+      'createPlaylistSuccess',
     );
   }
 }

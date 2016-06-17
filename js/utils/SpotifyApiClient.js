@@ -71,18 +71,23 @@ class SpotifyApiClient {
         'Authorization': `${credentials.tokenType} ${credentials.authToken}`,
         'Content-Type': 'application/json',
       }
-    }).then((plResponse) => {
-      const pl = plResponse.json();
-      const dataPayload = { uris: recommendation.tracks.map((track) => track.uri)};
-      return fetch(`${pl.href}/tracks`, {
-        method: 'POST',
-        body: JSON.stringify(dataPayload),
-        headers: {
-          'Authorization': `${credentials.tokenType} ${credentials.authToken}`,
-          'Content-Type': 'application/json',
-        }
-      }).then((response) => response.json());
-    });
+    })
+    .then((response) => response.json())
+    .then((playlist) => {
+      if (!playlist.hasOwnProperty('error')) {
+        const dataPayload = { uris: recommendation.tracks.map((track) => track.uri)};
+        return fetch(playlist.tracks.href, {
+          method: 'POST',
+          body: JSON.stringify(dataPayload),
+          headers: {
+            'Authorization': `${credentials.tokenType} ${credentials.authToken}`,
+            'Content-Type': 'application/json',
+          }
+        });
+      }else{
+        throw playlist;
+      }
+    }).then((response) => response.json());
   }
 }
 
