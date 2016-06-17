@@ -10,8 +10,20 @@ import styles from './styles';
 
 export default  class LandingScene extends Component {
 
+  _renderResultsButton = () => {
+    if(this.props.recommendations){
+      return(<Button
+        style={styles.startButton}
+        onPress={this.props.showResults}>
+         My recommendations!!
+      </Button>);
+    }
+  }
+
   _renderComponent = () => {
     if (this.props.user) {
+      console.log(this.props);
+
       return (
         <SpotifyProfile
           user={ this.props.user }
@@ -24,11 +36,7 @@ export default  class LandingScene extends Component {
             onPress={this.props.start}>
             Make my list!!
           </Button>
-          <Button
-            style={styles.startButton}
-            onPress={this.props.showResults}>
-             My recommendations!!
-          </Button>
+          {this._renderResultsButton()}
           <Text style={styles.instructions}>
             Some other text right here!!
           </Text>

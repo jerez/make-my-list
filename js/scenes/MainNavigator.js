@@ -21,7 +21,13 @@ class LandingSceneContainer extends Component {
     return (
       <View style={{flex:1}}>
         <StatusBar barStyle='default'/>
-        <AltContainer store={AuthStore} actions={{AuthActions: AuthActions}}>
+        <AltContainer
+          stores={[AuthStore, ContentStore]}
+          inject={{
+            user: () => AuthStore.getState().user,
+            recommendations: () => ContentStore.getState().recommendations,
+          }}
+          actions={{AuthActions: AuthActions}}>
           <LandingScene {...this.props} />
         </AltContainer>
       </View>
