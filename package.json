@@ -9,6 +9,7 @@
     "alt": "^0.18.4",
     "alt-container": "^1.0.2",
     "buffer": "^4.6.0",
+    "moment": "^2.13.0",
     "react": "^15.0.2",
     "react-native": "^0.26.2",
     "react-native-button": "^1.6.0",

@@ -5,7 +5,7 @@ import { View, Text, Switch, Slider } from 'react-native';
 import config from 'MakeMyList/js/utils/config';
 import styles from './styles';
 
-export default class OptionView extends Component {
+export default class OptionBox extends Component {
 
   static propTypes = {
     option: React.PropTypes.shape({

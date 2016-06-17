@@ -6,6 +6,7 @@ import config from 'MakeMyList/js/utils/config';
 import LandingScene from './Landing';
 import SeedScene from './Seed';
 import OptionsScene from './Options';
+import ResultsScene from './Results';
 
 import AltContainer from 'alt-container';
 import AuthActions from 'MakeMyList/js/flux/actions/AuthActions';
@@ -54,6 +55,19 @@ class OptionsSceneContainer extends Component {
  }
 }
 
+class ResultsSceneContainer extends Component {
+  render() {
+    return (
+      <View style={{flex:1}}>
+        <StatusBar barStyle='light-content'/>
+        <AltContainer store={ContentStore} actions={{ContentActions: ContentActions}}>
+          <ResultsScene {...this.props} />
+        </AltContainer>
+      </View>
+   );
+ }
+}
+
 export default class MainNavigator extends Component {
 
   static propTypes = {
@@ -72,7 +86,10 @@ export default class MainNavigator extends Component {
           navigationBarHidden:true,
           component: LandingSceneContainer,
           title: 'Home',
-          passProps: { next: this.startFlow },
+          passProps: {
+            start: this.startFlow,
+            showResults: this.showResults,
+          },
         }}
       />
     );
@@ -93,7 +110,22 @@ export default class MainNavigator extends Component {
       navigationBarHidden:false,
       title: 'Options',
       component: OptionsSceneContainer,
-      passProps: { next: ContentActions.getRecommendations },
+      passProps: {
+        next:() => {
+          ContentActions.getRecommendations();
+          this.showResults() ;
+        }
+      },
+    })
+  }
+
+  showResults = () => {
+    this.refs.mainNav.push({
+      navigationBarHidden:false,
+      title: 'Recommendations',
+      component: ResultsSceneContainer,
+      rightButtonTitle: 'Done',
+      onRightButtonPress: () => this.refs.mainNav.popToTop(),
     })
   }
 }

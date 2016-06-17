@@ -1,0 +1,6 @@
+{
+  "name": "ResultBox",
+  "version": "0.0.1",
+  "main": "./ResultBox.js",
+  "private": true
+}

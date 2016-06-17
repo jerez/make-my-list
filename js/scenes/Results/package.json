@@ -1,0 +1,6 @@
+{
+  "name": "ResultsScene",
+  "version": "0.0.1",
+  "main": "./ResultsScene.js",
+  "private": true
+}

@@ -1,14 +1,21 @@
 
 import alt from '../alt';
+import moment from 'moment';
+import { AsyncStorage } from 'react-native';
 import ContentActions from '../actions/ContentActions';
 import ContentSource from '../sources/ContentSource';
 import AuthActions from '../actions/AuthActions';
 import AuthStore from './AuthStore';
 import OptionsStore from './OptionsStore';
 
+const STORAGE_KEY = 'RECOMMENDATIONS';
+
 export default class ContentStore {
 
   constructor() {
+    this.on('init', () => {
+      this._loadSavedResults();
+    });
     this._initializeState();
     this.bindActions(ContentActions);
     this.registerAsync(ContentSource);
@@ -16,6 +23,18 @@ export default class ContentStore {
       _initializeState: AuthActions.LOGIN,
       _initializeState: AuthActions.LOGOUT,
     });
+  }
+
+  async _loadSavedResults() {
+    try {
+      const results = JSON.parse(await AsyncStorage.getItem(STORAGE_KEY));
+      if (results !== null){
+        this.recommendations = results;
+        this.getInstance().emitChange();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   _initializeState(){
@@ -29,9 +48,29 @@ export default class ContentStore {
   _buidGenresFromArtists(artists){
     const flattened =  artists.map((artist) => artist.genres )
     .reduce((first, second) => first.concat(second), [])
-    .filter((elem, pos, arr) => arr.indexOf(elem) == pos);
+    .filter((elem, index, self) => arr.indexOf(elem) == index);
     return flattened.map((genre, index) => {
       return { label: genre, id:index, type:'genre', selected:false };
+    });
+  }
+
+  _buildTrackList(response){
+    return response.tracks.map((track)=>{
+      let leanTrack = {
+        id: track.id,
+        name: track.name,
+        previewUrl: track.preview_url,
+        album: track.album.name,
+        artists: track.artists.map((artist)=>artist.name),
+      };
+      if(track.album.images.length > 0){
+        leanTrack.image = track.album.images
+        .reduce((first, second) => {
+          if (first.heigh > second.height) return first;
+          else return second;
+        }).url;
+      }
+      return leanTrack;
     });
   }
 
@@ -99,7 +138,25 @@ export default class ContentStore {
   }
 
   onGetRecommendationsSuccess(response){
-    console.log(response);
+    if(!this.recommendations){
+      this.recommendations = [];
+    }
+    if (response.tracks && response.tracks.length > 0) {
+      this.recommendations.push({
+        name: `mml-${moment().format('MMMM-DD-YYYY-hh-mm-ss')}`,
+        created: Date.now(),
+        tracks: this._buildTrackList(response),
+      });
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(this.recommendations));
+    }
+  }
+
+  onDeleteResult(result){
+    const index = this.recommendations.findIndex((item) => item.name == result.name);
+    if (index >= 0) {
+      this.recommendations.splice(index, 1);
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(this.recommendations));
+    }
   }
 
   onFetchGenresFailed(error) {

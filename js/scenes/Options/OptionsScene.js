@@ -2,7 +2,7 @@
 import React, { PropTypes, Component } from 'react';
 import { View, ScrollView, Text } from 'react-native';
 import Button from 'react-native-button';
-import OptionView from 'MakeMyList/js/components/OptionView';
+import OptionBox from 'MakeMyList/js/components/OptionBox';
 
 import styles from './styles';
 
@@ -30,7 +30,7 @@ export default class OptionScene extends Component {
         <Text style={styles.instructions}>Enable those options that you want to use to improve your results</Text>
         <ScrollView automaticallyAdjustContentInsets={false} >
           {this.optionsCache.map((option, index) =>
-            <OptionView key={index}
+            <OptionBox key={index}
               option={option}
               onChange={this._handleOptionChange} />
           )}

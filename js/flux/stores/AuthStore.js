@@ -18,7 +18,7 @@ export default class AuthStore {
       this._clearState();
     });
     this.on('afterEach', (payload) => {
-      AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify(payload.state));
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(payload.state));
     });
   }
 

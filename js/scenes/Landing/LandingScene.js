@@ -21,8 +21,13 @@ export default  class LandingScene extends Component {
           </Text>
           <Button
             style={styles.startButton}
-            onPress={this.props.next}>
+            onPress={this.props.start}>
             Make my list!!
+          </Button>
+          <Button
+            style={styles.startButton}
+            onPress={this.props.showResults}>
+             My recommendations!!
           </Button>
           <Text style={styles.instructions}>
             Some other text right here!!

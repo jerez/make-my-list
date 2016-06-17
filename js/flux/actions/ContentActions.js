@@ -14,6 +14,7 @@ class ContentActions {
       'getRecommendations',
       'getRecommendationsSuccess',
       'getRecommendationsFailed',
+      'deleteResult'
     );
   }
 }
