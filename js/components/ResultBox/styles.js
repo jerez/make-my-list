@@ -1,43 +1,50 @@
 import { StyleSheet } from 'react-native'
 import config from 'MakeMyList/js/utils/config';
 
-const rowStyle = {
-  justifyContent: 'center',
-  paddingVertical: 2,
-  paddingHorizontal: 5,
-  margin: 2,
-  alignItems: 'center',
-  borderWidth: 0.5,
-  borderRadius: 5,
-}
-
-export const itemHighlight = {
-  genre: config.UI.Blue,
-  artist: config.UI.Orange,
-  track: config.UI.Green,
-}
+const buttonStyle ={
+  margin: 3,
+  paddingVertical:4,
+  height:20,
+  borderRadius:10,
+  fontSize:10,
+  width:80,
+  color: config.UI.White,
+};
 
 export default StyleSheet.create({
-  container: {
-    flex:1,
-  },
-  list: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    flexWrap: 'wrap'
-  },
-  row: {
-    ...rowStyle,
-    backgroundColor: config.UI.BlueGreen,
+  box: {
+    padding: 5,
+    margin: 5,
     borderColor: config.UI.Grey,
+    borderWidth: 1,
+    borderRadius: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-  selected: {
-    ...rowStyle,
-    backgroundColor: config.UI.DkGrey,
-    borderColor: config.UI.Green,
+  image:{
+    height:64,
+    width:64,
+    borderRadius: 5,
   },
-  text: {
-    flex: 1,
-    color: config.UI.LtGrey,
+  text:{
+    textAlign:'justify',
+    paddingBottom:5,
+    paddingHorizontal:5,
+  },
+  buttonRow:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  deleteButton:{
+    ...buttonStyle,
+    backgroundColor: config.UI.Red,
+  },
+  saveButton:{
+    ...buttonStyle,
+    backgroundColor: config.UI.Green,
+  },
+  detailsButton:{
+    ...buttonStyle,
+    backgroundColor: config.UI.Blue,
   },
 });

@@ -22,8 +22,22 @@ export default class ResultBox extends Component {
         })
       ).isRequired,
     }).isRequired,
+    onSaveClick: PropTypes.func.isRequired,
+    onDeleteClick: PropTypes.func.isRequired,
+    onDetailsClick: PropTypes.func.isRequired,
   };
 
+  _handleOnSaveClick = () => {
+    this.props.onDeleteClick(this.props.item);
+  }
+
+  _handleOnDeleteClick = () => {
+    this.props.onSaveClick(this.props.item);
+  }
+
+  _handleOnDetailsClick = () => {
+    this.props.onDetailsClick(this.props.item);
+  }
 
   render() {
     const item = this.props.item;
@@ -46,52 +60,27 @@ export default class ResultBox extends Component {
 
     return (
       <View
-        style={{
-          padding: 5,
-          margin: 5,
-          borderColor: config.UI.Grey,
-          borderWidth: 1,
-          borderRadius: 5,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}>
+        style={styles.box}>
         <Image source={{ uri: imageUrl }}
-          style={{
-            height:64,
-            width:64,
-            borderRadius: 5,
-          }}/>
+          style={styles.image}/>
         <View style={{flex:1}}>
-          <Text style={{ textAlign:'justify', paddingBottom:5, paddingHorizontal:5  }}>{createdText}</Text>
-          <Text style={{ textAlign:'justify', paddingBottom:5, paddingHorizontal:5  }}>{artistsText}</Text>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Button
-              style={{
-                ...buttonStyle,
-                backgroundColor: config.UI.Red,
-              }}
-              onPress={this._handleNext}>
+          <Text style={styles.text}>{createdText}</Text>
+          <Text style={styles.text}>{artistsText}</Text>
+          <View style={styles.buttonRow}>
+            <Button style={styles.deleteButton}
+              onPress={this._handleOnDeleteClick}>
               Delete
             </Button>
-            <Button
-              style={{
-                ...buttonStyle,
-                backgroundColor: config.UI.Green,
-              }}
-              onPress={this._handleNext}>
+            <Button style={styles.saveButton}
+              onPress={this._handleOnSaveClick}>
               Save
             </Button>
-            <Button
-              style={{
-                ...buttonStyle,
-                backgroundColor: config.UI.Blue,
-              }}
-              onPress={this._handleNext}>
+            <Button style={styles.detailsButton}
+              onPress={this._handleOnDetailsClick}>
               Details
             </Button>
           </View>
         </View>
       </View>);
   }
-
 }
