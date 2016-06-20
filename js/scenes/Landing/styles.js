@@ -7,9 +7,16 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+    color: config.UI.DkGrey,
+  },
   instructions: {
     textAlign: 'center',
     color: config.UI.Grey,
+    paddingHorizontal:20,
   },
   startButton: {
     height:50,

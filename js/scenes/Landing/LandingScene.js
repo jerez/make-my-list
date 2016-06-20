@@ -27,7 +27,7 @@ export default  class LandingScene extends Component {
           user={ this.props.user }
           onLogoutClick={  this.props.AuthActions.logout }>
           <Text style={styles.instructions}>
-            Some instructions here!
+            Tap on 'Make my list' to start selecting your preferences!
           </Text>
           <Button
             style={styles.startButton}
@@ -35,12 +35,19 @@ export default  class LandingScene extends Component {
             Make my list!!
           </Button>
           {this._renderResultsButton()}
-          <Text style={styles.instructions}>
-            Some other text right here!!
-          </Text>
        </SpotifyProfile>);
     } else {
-      return <SpotifyButton onClick={ this.props.AuthActions.showLogin }/>
+      return (
+        <View>
+          <Text style={styles.welcome}>
+            Welcome to MakeMyList!
+          </Text>
+          <Text style={styles.instructions}>
+            To start making your custom list please connect with your Spotify account!
+          </Text>
+          <SpotifyButton onClick={ this.props.AuthActions.showLogin }/>
+        </View>
+      );
     }
   }
 
