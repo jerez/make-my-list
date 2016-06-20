@@ -2,18 +2,10 @@ import config from './config';
 import url from 'url';
 import querystring from 'querystring';
 import { Buffer } from 'buffer';
+import AuthActions from 'MakeMyList/js/flux/actions/AuthActions';
+
 
 class SpotifyApiClient {
-
-  static performRequest(credentials, method, path){
-    const requestUri = url.format({protocol:'https', host:config.Spotify.apiHost, pathname:`v1/${path}`});
-    return fetch(requestUri, {
-      method: method,
-      headers: {
-        'Authorization': `${credentials.tokenType} ${credentials.authToken}`,
-      }
-    }).then((response) => response.json());
-  }
 
   static requestToken(code){
     const tokenUrl = url.format({protocol:'https', host:config.Spotify.accountHost, pathname:'api/token'});
@@ -29,6 +21,55 @@ class SpotifyApiClient {
         'Accept': 'application/json',
       }
     }).then((response) => { return response.json(); });
+  }
+
+  static refreshToken(credentials){
+    const tokenUrl = url.format({protocol:'https', host:config.Spotify.accountHost, pathname:'api/token'});
+    const base64Hash = new Buffer(`${config.Spotify.clientId}:${config.Spotify.clientSecret}`).toString('base64');
+    const payload = querystring.stringify({grant_type: 'refresh_token', refresh_token: credentials.refreshToken});
+
+    return fetch(tokenUrl, {
+      method: 'POST',
+      body: payload,
+      headers: {
+        'Authorization': `Basic ${base64Hash}`,
+        'Content-Type':'application/x-www-form-urlencoded',
+        'Accept': 'application/json',
+      }
+    }).then((response) => { return response.json(); });
+  }
+
+  static authenticatedRequest(credentials, requestPromise){
+    const limitTimeStamp = credentials.expiresAt - (10 * 60 * 1000);
+    const shouldRefresh =  (new Date()).getTime() >= limitTimeStamp;
+    if (shouldRefresh) {
+      return SpotifyApiClient.refreshToken(credentials)
+      .then((response) => {
+        if(response.hasOwnProperty('error')){
+          return Promise.reject(response.error);
+        }else{
+          AuthActions.credentialsReceived(response);
+          return requestPromise;
+        }
+      })
+      .catch((error) => {
+        AuthActions.logInFailed(error);
+      });
+    } else {
+      return requestPromise
+    }
+  }
+
+  static performRequest(credentials, method, path){
+    const requestUri = url.format({protocol:'https', host:config.Spotify.apiHost, pathname:`v1/${path}`});
+    const request = fetch(requestUri, {
+      method: method,
+      headers: {
+        'Authorization': `${credentials.tokenType} ${credentials.authToken}`,
+      }
+    }).then((response) => response.json());
+
+    return SpotifyApiClient.authenticatedRequest(credentials, request);
   }
 
   static getRecommendations(credentials, seed, options){
@@ -54,17 +95,20 @@ class SpotifyApiClient {
 
     const requestUri = url.format({protocol:'https', host:config.Spotify.apiHost, pathname:'v1/recommendations', query:payload});
 
-    return fetch(requestUri, {
+    const request = fetch(requestUri, {
       method: 'GET',
       headers: {
         'Authorization': `${credentials.tokenType} ${credentials.authToken}`,
       }
     }).then((response) => response.json());
+
+    return SpotifyApiClient.authenticatedRequest(credentials, request);
+
   }
 
   static createPlayList(credentials, recommendation){
     const requestUri = url.format({protocol:'https', host:config.Spotify.apiHost, pathname:`v1/users/${credentials.user.id}/playlists`});
-    return fetch(requestUri, {
+    const request = fetch(requestUri, {
       method: 'POST',
       body: JSON.stringify({name: recommendation.name}),
       headers: {
@@ -88,6 +132,7 @@ class SpotifyApiClient {
         throw playlist;
       }
     }).then((response) => response.json());
+    return SpotifyApiClient.authenticatedRequest(credentials, request);
   }
 }
 

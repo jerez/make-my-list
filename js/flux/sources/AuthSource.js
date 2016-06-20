@@ -6,7 +6,7 @@ const AuthSource = {
       remote(state) {
         return SpotifyApiClient.requestToken(state.authCode);
       },
-      success: AuthActions.fetchUser,
+      success: AuthActions.credentialsReceived,
       error: AuthActions.logInFailed,
     },
 

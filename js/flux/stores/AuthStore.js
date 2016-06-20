@@ -43,6 +43,7 @@ export default class AuthStore {
       refreshToken: null,
       tokenType: null,
       user: null,
+      expiresAt: (new Date()).getTime(),
     };
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(cleanState));
     Object.assign(this, cleanState);
@@ -54,11 +55,14 @@ export default class AuthStore {
     this.getInstance().requestToken();
   }
 
-  onFetchUser(credentials) {
+  onCredentialsReceived(credentials) {
     this.authToken = credentials.access_token;
-    this.refreshToken = credentials.refresh_token;
     this.tokenType = credentials.token_type;
-    this.getInstance().requestUser();
+    this.expiresAt = new Date(Date.now() + credentials.expires_in * 1000).getTime();
+    if(credentials.hasOwnProperty('refresh_token')){
+      this.refreshToken = credentials.refresh_token;
+      this.getInstance().requestUser();
+    }
   }
 
   onFetchUserSuccess(response) {

@@ -5,8 +5,8 @@ class AuthActions {
   constructor() {
     this.generateActions(
       'login',
+      'credentialsReceived',
       'logInFailed',
-      'fetchUser',
       'fetchUserSuccess',
       'fetchUserFailed',
       'logout',
