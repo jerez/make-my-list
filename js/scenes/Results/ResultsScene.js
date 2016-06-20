@@ -1,6 +1,6 @@
 
 import React, { PropTypes, Component } from 'react';
-import { View, ScrollView, Text } from 'react-native';
+import { View, ScrollView, Text, AlertIOS } from 'react-native';
 import Button from 'react-native-button';
 import ResultBox from 'MakeMyList/js/components/ResultBox';
 import ListScene from './ListScene';
@@ -11,7 +11,29 @@ import styles from './styles';
 export default class ResultsScene extends Component {
 
   _handleOnSaveClick = (item) => {
-    this.props.ContentActions.createPlaylist(item);
+
+    AlertIOS.prompt(
+      'Name your list',
+      'Type your list name to save it' ,
+      [
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'OK', onPress: name => {
+          if (name.length) {
+            item.name = name;
+            this.props.ContentActions.createPlaylist(item);
+            AlertIOS.alert(
+             'Congrats!',
+             'Your list was created!',
+             [
+               {text: 'OK', onPress: () => this.props.ContentActions.deleteResult(item)}
+             ]
+            );
+          }
+        }},
+      ],
+      'plain-text',
+      item.name
+    );
   }
 
   _handleOnDeleteClick = (item) => {
