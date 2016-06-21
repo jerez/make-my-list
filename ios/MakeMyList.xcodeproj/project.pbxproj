@@ -21,9 +21,9 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		5B5E290CC5F94475ABF1CAA6 /* libRNBranch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7D0D6E7CC540A1BC9048CF /* libRNBranch.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		C9452E231D14768A00DCEB4E /* RNAudioPlayerURL.m in Sources */ = {isa = PBXBuildFile; fileRef = C9452E221D14768A00DCEB4E /* RNAudioPlayerURL.m */; };
+		C9A4CC9F1D19F99B00E77416 /* libRNBranch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A4CC9E1D19F8A300E77416 /* libRNBranch.a */; };
 		D0A054E6E6D14CCB8D3FD985 /* libPods-MakeMyList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E27B632C30ECFD0753DB65C2 /* libPods-MakeMyList.a */; };
 		D46BA9E7467D8E916BF86638 /* libPods-MakeMyListTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1DDE6B168C9AD4A8DD5B66 /* libPods-MakeMyListTests.a */; };
 /* End PBXBuildFile section */
@@ -106,9 +106,9 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
-		C97B07521D19F6BA000B1022 /* PBXContainerItemProxy */ = {
+		C9A4CC9D1D19F8A300E77416 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 363B34C2299B41C1AEF0A486 /* RNBranch.xcodeproj */;
+			containerPortal = C9A4CC991D19F8A300E77416 /* RNBranch.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = B3A3CC361C5B0A070016AC52;
 			remoteInfo = RNBranch;
@@ -137,15 +137,14 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		150ACD6D85CF53F079E48BF9 /* Pods-MakeMyListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakeMyListTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MakeMyListTests/Pods-MakeMyListTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1A1DDE6B168C9AD4A8DD5B66 /* libPods-MakeMyListTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MakeMyListTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1E7D0D6E7CC540A1BC9048CF /* libRNBranch.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBranch.a; sourceTree = "<group>"; };
 		1EFB5E8DB0F8ED90E9A90244 /* Pods-MakeMyList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakeMyList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MakeMyList/Pods-MakeMyList.debug.xcconfig"; sourceTree = "<group>"; };
-		363B34C2299B41C1AEF0A486 /* RNBranch.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBranch.xcodeproj; path = "../node_modules/react-native-branch/RNBranch/RNBranch.xcodeproj"; sourceTree = "<group>"; };
 		6CA628CFCD422B0ECD0F4F2E /* Pods-MakeMyList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakeMyList.release.xcconfig"; path = "Pods/Target Support Files/Pods-MakeMyList/Pods-MakeMyList.release.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7B5439DEBB1A02E4F1239322 /* Pods-MakeMyListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakeMyListTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MakeMyListTests/Pods-MakeMyListTests.release.xcconfig"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		C9452E211D14768A00DCEB4E /* RNAudioPlayerURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNAudioPlayerURL.h; path = MakeMyList/RNAudioPlayerURL.h; sourceTree = "<group>"; };
 		C9452E221D14768A00DCEB4E /* RNAudioPlayerURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNAudioPlayerURL.m; path = MakeMyList/RNAudioPlayerURL.m; sourceTree = "<group>"; };
+		C9A4CC991D19F8A300E77416 /* RNBranch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBranch.xcodeproj; path = "../node_modules/react-native-branch/RNBranch/RNBranch.xcodeproj"; sourceTree = "<group>"; };
 		E27B632C30ECFD0753DB65C2 /* libPods-MakeMyList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MakeMyList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -172,8 +171,8 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				C9A4CC9F1D19F99B00E77416 /* libRNBranch.a in Frameworks */,
 				D0A054E6E6D14CCB8D3FD985 /* libPods-MakeMyList.a in Frameworks */,
-				5B5E290CC5F94475ABF1CAA6 /* libRNBranch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +307,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				C9A4CC991D19F8A300E77416 /* RNBranch.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -318,7 +318,6 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				363B34C2299B41C1AEF0A486 /* RNBranch.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -354,10 +353,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C97B07451D19F6BA000B1022 /* Products */ = {
+		C9A4CC9A1D19F8A300E77416 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C97B07531D19F6BA000B1022 /* libRNBranch.a */,
+				C9A4CC9E1D19F8A300E77416 /* libRNBranch.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -475,8 +474,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = C97B07451D19F6BA000B1022 /* Products */;
-					ProjectRef = 363B34C2299B41C1AEF0A486 /* RNBranch.xcodeproj */;
+					ProductGroup = C9A4CC9A1D19F8A300E77416 /* Products */;
+					ProjectRef = C9A4CC991D19F8A300E77416 /* RNBranch.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -558,11 +557,11 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C97B07531D19F6BA000B1022 /* libRNBranch.a */ = {
+		C9A4CC9E1D19F8A300E77416 /* libRNBranch.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNBranch.a;
-			remoteRef = C97B07521D19F6BA000B1022 /* PBXContainerItemProxy */;
+			remoteRef = C9A4CC9D1D19F8A300E77416 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -747,10 +746,7 @@
 				INFOPLIST_FILE = MakeMyListTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MakeMyList.app/MakeMyList";
 			};
@@ -765,10 +761,7 @@
 				INFOPLIST_FILE = MakeMyListTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MakeMyList.app/MakeMyList";
 			};
@@ -785,7 +778,6 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/**",
-					"$(SRCROOT)/../node_modules/react-native-branch/RNBranch",
 				);
 				INFOPLIST_FILE = MakeMyList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -808,7 +800,6 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/**",
-					"$(SRCROOT)/../node_modules/react-native-branch/RNBranch",
 				);
 				INFOPLIST_FILE = MakeMyList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -859,7 +850,6 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
-					"$(SRCROOT)/../node_modules/react-native-branch/RNBranch",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -900,7 +890,6 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
-					"$(SRCROOT)/../node_modules/react-native-branch/RNBranch",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

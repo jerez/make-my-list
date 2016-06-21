@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "185419E99C0284DE39A486D842E90C6CDEEA369F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "ECA5927655F95759709A34C616F22E273889166D" : 0,
+    "185419E99C0284DE39A486D842E90C6CDEEA369F" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C29DA9F1-9925-4CF3-B975-82DF4F0A0292",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "ECA5927655F95759709A34C616F22E273889166D" : "..\/.nvm",
+    "185419E99C0284DE39A486D842E90C6CDEEA369F" : "MakeMyList\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MakeMyList",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ios\/MakeMyList.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jerez\/make-my-list.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "185419E99C0284DE39A486D842E90C6CDEEA369F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/creationix\/nvm.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "ECA5927655F95759709A34C616F22E273889166D"
+    }
+  ]
+}
