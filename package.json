@@ -12,6 +12,7 @@
     "moment": "^2.13.0",
     "react": "^15.0.2",
     "react-native": "^0.26.2",
+    "react-native-branch": "^0.1.1",
     "react-native-button": "^1.6.0",
     "react-native-ios-network-audio": "0.0.8",
     "url": "^0.11.0"
