@@ -18,7 +18,7 @@ export default StyleSheet.create({
   },
   instructions: {
     textAlign: 'center',
-    color: config.UI.colors.Grey,
+    color: config.UI.colors.LtGrey,
     paddingHorizontal:20,
   },
   startButton: {

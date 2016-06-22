@@ -39,7 +39,6 @@ export default  class LandingScene extends Component {
     } else {
       return (
         <View style={styles.container}>
-          <Image source={{uri: 'logo'}} style={styles.logo} />
           <Text style={styles.welcome}>
             Welcome to MakeMyList!
           </Text>

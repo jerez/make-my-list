@@ -56,7 +56,7 @@ export default class SeedScene extends Component {
           values={['Genres', 'Artists', 'Tracks']}
           selectedIndex={this.state.selectedIndex}
           onChange={(event) => this.setState({selectedIndex:event.nativeEvent.selectedSegmentIndex})}
-          tintColor={config.UI.DkGrey} />
+          tintColor={config.UI.colors.Blue} />
         <ScrollView style={styles.box} automaticallyAdjustContentInsets={false}>
           <ItemsView items={items} tapCallback={this._selectItem}/>
         </ScrollView>

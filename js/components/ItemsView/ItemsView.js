@@ -15,7 +15,7 @@ export default class ItemsView extends Component {
       ? [styles.selected, {borderColor: itemHighlight[item.type]}]
       : styles.row;
     const textStyle = item.selected
-      ? [styles.selectedText, {color: itemHighlight[item.type]}]
+      ? [styles.text, {color: itemHighlight[item.type]}]
       : styles.text;
 
     return (

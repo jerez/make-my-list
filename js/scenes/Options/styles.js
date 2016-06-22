@@ -9,13 +9,12 @@ export default StyleSheet.create({
     marginHorizontal:10,
   },
   title:{
-    color: config.UI.colors.DkGrey,
+    ...config.UI.styles.title,
     textAlign: 'center',
-    fontSize: 20,
     padding: 5,
   },
   instructions:{
-    color: config.UI.colors.Grey,
+    ...config.UI.styles.text,
     textAlign: 'center',
     padding: 5,
   },

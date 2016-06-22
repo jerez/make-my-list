@@ -7,12 +7,12 @@ const rowStyle = {
   paddingHorizontal: 5,
   margin: 2,
   alignItems: 'center',
-  borderWidth: 0.5,
+  borderWidth: 1,
   borderRadius: 5,
 }
 
 export const itemHighlight = {
-  genre: config.UI.colors.Blue,
+  genre: config.UI.colors.Yellow,
   artist: config.UI.colors.Orange,
   track: config.UI.colors.Green,
 }
@@ -24,12 +24,12 @@ export default StyleSheet.create({
   list: {
     justifyContent: 'center',
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   row: {
     ...rowStyle,
-    backgroundColor: config.UI.colors.BlueGreen,
-    borderColor: config.UI.colors.Grey,
+    backgroundColor: config.UI.colors.Grey,
+    borderColor: config.UI.colors.DkGrey,
   },
   selected: {
     ...rowStyle,
@@ -39,6 +39,7 @@ export default StyleSheet.create({
   text: {
     flex: 1,
     ...config.UI.styles.text,
-    color: config.UI.colors.LtGrey,
+    fontFamily: 'Montserrat-Light',
+    color: config.UI.colors.DkGrey,
   },
 });

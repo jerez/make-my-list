@@ -35,8 +35,8 @@ export default class OptionBox extends Component {
   render() {
     const option = this.state.option;
     const label = `${option.name.charAt(0).toUpperCase()}${option.name.slice(1)} [${Math.round(option.value*100)}]`;
-    const boxStyle = option.enabled ? [styles.box, {borderColor:config.UI.Blue}] : styles.box;
-    const titleStyle = option.enabled ? [styles.title, {color:config.UI.Blue}] : styles.title;
+    const boxStyle = option.enabled ? [styles.box, {borderColor:config.UI.colors.Blue}] : styles.box;
+    const titleStyle = option.enabled ? [styles.title, {color:config.UI.colors.Blue}] : styles.title;
     return (
       <View style={styles.container}>
         <View style={boxStyle}>
@@ -46,13 +46,13 @@ export default class OptionBox extends Component {
             <Switch
               onValueChange={ this._onStateChange }
               value={option.enabled}
-              onTintColor={config.UI.Blue}
-              tintColor={config.UI.Grey}/>
+              onTintColor={config.UI.colors.Blue}
+              tintColor={config.UI.colors.Grey}/>
             <Slider style={styles.slider}
               step={0.05}
               value={option.value}
               disabled={!option.enabled}
-              minimumTrackTintColor={config.UI.Blue}
+              minimumTrackTintColor={config.UI.colors.Blue}
               onValueChange={ this._onValueChange } />
           </View>
         </View>

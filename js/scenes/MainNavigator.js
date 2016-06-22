@@ -20,7 +20,7 @@ class LandingSceneContainer extends Component {
   render() {
     return (
       <View style={{flex:1}}>
-        <StatusBar barStyle='default'/>
+        <StatusBar barStyle='light-content'/>
         <AltContainer
           stores={[AuthStore, ContentStore]}
           inject={{
@@ -83,11 +83,11 @@ export default class MainNavigator extends Component {
     return (
       <NavigatorIOS style={{flex:1}}
         shadowHidden
-        barTintColor={config.UI.Black}
-        tintColor={config.UI.LtGrey}
-        titleTextColor={config.UI.LtGrey}
+        barTintColor={config.UI.colors.Black}
+        tintColor={config.UI.colors.LtGrey}
+        titleTextColor={config.UI.colors.LtGrey}
         ref='mainNav'
-        itemWrapperStyle={{flex:1, backgroundColor:config.UI.LtGrey}}
+        itemWrapperStyle={{flex:1, backgroundColor:config.UI.colors.DkGrey}}
         initialRoute={{
           navigationBarHidden:true,
           component: LandingSceneContainer,

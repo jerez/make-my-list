@@ -32,7 +32,8 @@ export default StyleSheet.create({
     height:30,
     overflow:'hidden',
     borderRadius:15,
-    backgroundColor: config.UI.colors.DkGrey,
-    color: config.UI.colors.Orange,
+    borderWidth:1,
+    borderColor: config.UI.colors.Red,
+    color: config.UI.colors.Red,
   },
 });

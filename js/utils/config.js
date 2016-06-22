@@ -19,17 +19,16 @@ const uiColors = {
   Blue: '#0993c7',
   Green: '#82b919',
   BlueGreen: '#19b9b7',
-  MMLBlue: '#0E3F81',
 }
 
 const defaultStyles = {
   text:{
-    color: uiColors.DkGrey,
+    color: uiColors.LtGrey,
     fontSize: 14,
     fontFamily: 'Montserrat-Regular'
   },
   title: {
-    color: uiColors.MMLBlue,
+    color: uiColors.Blue,
     fontSize: 18,
     fontFamily: 'Montserrat-SemiBold'
   },
