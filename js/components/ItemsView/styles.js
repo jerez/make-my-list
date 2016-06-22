@@ -12,9 +12,9 @@ const rowStyle = {
 }
 
 export const itemHighlight = {
-  genre: config.UI.Blue,
-  artist: config.UI.Orange,
-  track: config.UI.Green,
+  genre: config.UI.colors.Blue,
+  artist: config.UI.colors.Orange,
+  track: config.UI.colors.Green,
 }
 
 export default StyleSheet.create({
@@ -28,16 +28,17 @@ export default StyleSheet.create({
   },
   row: {
     ...rowStyle,
-    backgroundColor: config.UI.BlueGreen,
-    borderColor: config.UI.Grey,
+    backgroundColor: config.UI.colors.BlueGreen,
+    borderColor: config.UI.colors.Grey,
   },
   selected: {
     ...rowStyle,
-    backgroundColor: config.UI.DkGrey,
-    borderColor: config.UI.Green,
+    backgroundColor: config.UI.colors.DkGrey,
+    borderColor: config.UI.colors.Green,
   },
   text: {
     flex: 1,
-    color: config.UI.LtGrey,
+    ...config.UI.styles.text,
+    color: config.UI.colors.LtGrey,
   },
 });

@@ -1,6 +1,6 @@
 
 import React, { PropTypes, Component } from 'react';
-import {View, Modal, Text } from 'react-native';
+import {View, Modal, Image, Text } from 'react-native';
 
 import Button from 'react-native-button';
 import SpotifyButton from 'MakeMyList/js/components/SpotifyButton';
@@ -38,7 +38,8 @@ export default  class LandingScene extends Component {
        </SpotifyProfile>);
     } else {
       return (
-        <View>
+        <View style={styles.container}>
+          <Image source={{uri: 'logo'}} style={styles.logo} />
           <Text style={styles.welcome}>
             Welcome to MakeMyList!
           </Text>

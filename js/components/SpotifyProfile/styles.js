@@ -12,10 +12,9 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   welcome: {
-    fontSize: 20,
+    ...config.UI.styles.title,
     textAlign: 'center',
     margin: 10,
-    color: config.UI.DkGrey,
   },
   content: {
     paddingVertical:10,
@@ -33,7 +32,7 @@ export default StyleSheet.create({
     height:30,
     overflow:'hidden',
     borderRadius:15,
-    backgroundColor: config.UI.DkGrey,
-    color: config.UI.Orange,
+    backgroundColor: config.UI.colors.DkGrey,
+    color: config.UI.colors.Orange,
   },
 });

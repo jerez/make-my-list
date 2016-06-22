@@ -12,6 +12,6 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   emptyText: {
-    color:config.UI.Red,
+    color:config.UI.colors.Red,
   },
 });

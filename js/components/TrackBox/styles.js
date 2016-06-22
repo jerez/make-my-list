@@ -29,6 +29,7 @@ export default StyleSheet.create({
     borderRadius: 5,
   },
   text:{
+    ...config.UI.styles.text,
     textAlign:'justify',
     paddingBottom:5,
     paddingHorizontal:5,
@@ -40,8 +41,8 @@ export default StyleSheet.create({
   previewButton:{
     ...button,
     margin: 3,
-    borderColor: config.UI.Green,
-    color: config.UI.Green,
+    borderColor: config.UI.colors.Green,
+    color: config.UI.colors.Green,
   },
   modalContent: {
     flex: 1,
@@ -50,7 +51,7 @@ export default StyleSheet.create({
     backgroundColor: 'rgba(38,38,38,0.3)',
   },
   modalBox:{
-    backgroundColor: config.UI.DkGrey,
+    backgroundColor: config.UI.colors.DkGrey,
     height:80,
     width:300,
     borderRadius:3,
@@ -58,14 +59,14 @@ export default StyleSheet.create({
     padding:10
   },
   modalTitle:{
+    ...config.UI.styles.title,
     textAlign:'center',
-    fontWeight: 'bold',
-    color: config.UI.Green,
+    color: config.UI.colors.Green,
   },
   modalButton:{
     ...button,
     margin:10,
-    borderColor: config.UI.Orange,
-    color: config.UI.Orange,
+    borderColor: config.UI.colors.Orange,
+    color: config.UI.colors.Orange,
   }
 });

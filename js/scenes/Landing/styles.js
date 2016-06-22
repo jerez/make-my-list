@@ -7,15 +7,18 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  logo: {
+    width: 75,
+    height: 75
+  },
   welcome: {
-    fontSize: 20,
+    ...config.UI.styles.title,
     textAlign: 'center',
     margin: 10,
-    color: config.UI.DkGrey,
   },
   instructions: {
     textAlign: 'center',
-    color: config.UI.Grey,
+    color: config.UI.colors.Grey,
     paddingHorizontal:20,
   },
   startButton: {
@@ -26,9 +29,9 @@ export default StyleSheet.create({
     paddingHorizontal:50,
     borderRadius:25,
     fontSize: 18,
-    borderColor: config.UI.Blue,
+    borderColor: config.UI.colors.Blue,
     borderWidth: 1,
-    color: config.UI.Blue,
+    color: config.UI.colors.Blue,
   },
 
 });

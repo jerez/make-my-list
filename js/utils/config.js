@@ -7,7 +7,7 @@ const spotify  = {
   redirectUri: 'makemylist://login/',
 }
 
-const ui = {
+const uiColors = {
   White: '#ffffff',
   Black: '#000000',
   Grey: '#999999',
@@ -19,9 +19,26 @@ const ui = {
   Blue: '#0993c7',
   Green: '#82b919',
   BlueGreen: '#19b9b7',
+  MMLBlue: '#0E3F81',
+}
+
+const defaultStyles = {
+  text:{
+    color: uiColors.DkGrey,
+    fontSize: 14,
+    fontFamily: 'Montserrat-Regular'
+  },
+  title: {
+    color: uiColors.MMLBlue,
+    fontSize: 18,
+    fontFamily: 'Montserrat-SemiBold'
+  },
 }
 
 export default {
   Spotify: spotify,
-  UI: ui
+  UI: {
+    colors: uiColors,
+    styles: defaultStyles,
+  }
 }

@@ -8,14 +8,14 @@ const buttonStyle ={
   borderRadius:10,
   fontSize:10,
   width:80,
-  color: config.UI.White,
+  color: config.UI.colors.White,
 };
 
 export default StyleSheet.create({
   box: {
     padding: 5,
     margin: 5,
-    borderColor: config.UI.Grey,
+    borderColor: config.UI.colors.Grey,
     borderWidth: 1,
     borderRadius: 5,
     flexDirection: 'row',
@@ -27,6 +27,7 @@ export default StyleSheet.create({
     borderRadius: 5,
   },
   text:{
+    ...config.UI.styles.text,
     textAlign:'justify',
     paddingBottom:5,
     paddingHorizontal:5,
@@ -37,14 +38,14 @@ export default StyleSheet.create({
   },
   deleteButton:{
     ...buttonStyle,
-    backgroundColor: config.UI.Red,
+    backgroundColor: config.UI.colors.Red,
   },
   saveButton:{
     ...buttonStyle,
-    backgroundColor: config.UI.Green,
+    backgroundColor: config.UI.colors.Green,
   },
   detailsButton:{
     ...buttonStyle,
-    backgroundColor: config.UI.Blue,
+    backgroundColor: config.UI.colors.Blue,
   },
 });

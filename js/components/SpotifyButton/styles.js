@@ -12,11 +12,11 @@ export default StyleSheet.create({
     height:50,
     overflow:'hidden',
     borderRadius:25,
-    backgroundColor: config.UI.Black,
+    backgroundColor: config.UI.colors.Black,
   },
   default: {
     fontSize: 20,
-    color: config.UI.Green,
+    color: config.UI.colors.Green,
   },
   logo: {
     flex: 1,

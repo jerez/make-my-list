@@ -9,13 +9,13 @@ export default StyleSheet.create({
     marginHorizontal:10,
   },
   title:{
-    color: config.UI.DkGrey,
+    color: config.UI.colors.DkGrey,
     textAlign: 'center',
     fontSize: 20,
     padding: 5,
   },
   instructions:{
-    color: config.UI.Grey,
+    color: config.UI.colors.Grey,
     textAlign: 'center',
     padding: 5,
   },
@@ -25,8 +25,8 @@ export default StyleSheet.create({
     height:30,
     overflow:'hidden',
     borderRadius:15,
-    borderColor: config.UI.Blue,
+    borderColor: config.UI.colors.Blue,
     borderWidth: 1,
-    color: config.UI.Blue,
+    color: config.UI.colors.Blue,
   },
 });

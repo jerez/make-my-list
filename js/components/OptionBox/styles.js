@@ -8,17 +8,18 @@ export default StyleSheet.create({
   box: {
     padding :10,
     margin: 10,
-    borderColor: config.UI.White,
+    borderColor: config.UI.colors.White,
     borderWidth: 1,
     borderRadius: 5,
   },
   title: {
-    color: config.UI.DkGrey,
+    ...config.UI.styles.title,
     textAlign:'center',
     margin: 2
   },
   label: {
-    color: config.UI.Grey,
+    ...config.UI.styles.text,
+    color: config.UI.colors.Grey,
     textAlign:'justify',
     marginBottom: 5
   },
